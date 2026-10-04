@@ -1,0 +1,6 @@
+PASS: imports locales y delimitadores de 12 archivos JavaScript (no parseo/ejecución JS).
+PASS: contenido, cantidades, identificadores únicos y métricas de logros.
+PASS: manifest, dimensiones PWA 192/512, atlas de 109 sprites.
+PASS: todos los recursos runtime incluidos en lista de precaché.
+PASS: 1000 topologías conectadas y deterministas mediante traducción Python de la geometría (no ejecución JS).
+NOT RUN: tests/engine-tests.js, navegador, PWA/offline real, IndexedDB real, controles táctiles, balance, rendimiento y pruebas físicas.
