@@ -138,7 +138,7 @@ print("OK items.png", sheet.size, len(items), "iconos")
 
 # ---------- iconos de habilidades: rejilla 12 (habilidad) x 8 (7 clases + pasivas) ----------
 CLASS_COL = [(150, 170, 200, 255), (120, 170, 255, 255), (140, 220, 140, 255), (200, 140, 220, 255),
-             (235, 90, 100, 255), (150, 220, 220, 255), (250, 140, 70, 255)]
+             (235, 90, 100, 255), (150, 220, 220, 255), (250, 140, 70, 255), (178, 127, 232, 255)]
 
 
 def badge(d, c):
@@ -173,7 +173,7 @@ def sk_resource(d, c):
 SK = {"shield": sk_shield, "sweep": sk_sweep, "dash": sk_dash, "bolt": sk_bolt, "freeze": sk_freeze,
       "heal": sk_heal, "poison": sk_poison, "bleed": sk_bleed, "evade": sk_evade, "drain": sk_drain,
       "blood": sk_blood, "summon": sk_summon, "burn": sk_burn, "nova": sk_nova, "resource": sk_resource}
-skills_sheet = Image.new("RGBA", (12 * 32, 8 * 32), (0, 0, 0, 0))
+skills_sheet = Image.new("RGBA", (12 * 32, 9 * 32), (0, 0, 0, 0))
 for ci, cls in enumerate(data["classes"]):
     for si, sk in enumerate(cls["skills"]):
         img, d = canvas()
@@ -192,6 +192,6 @@ def sk_pass_reg(d, c):
 for pi, fn in enumerate([sk_pass_atk, sk_pass_def, sk_pass_reg]):
     img, d = canvas(); badge(d, GOLD); fn(d, GOLD)
     img = img.resize((32, 32), Image.NEAREST)
-    skills_sheet.paste(img, (pi * 32, 7 * 32), img)
+    skills_sheet.paste(img, (pi * 32, 8 * 32), img)
 skills_sheet.save(ROOT / "assets" / "skills.png")
 print("OK skills.png", skills_sheet.size, "84 iconos")

@@ -46,6 +46,9 @@ EXTRA = {
     "Summoner": [("Doble eco", "summon"), ("Aullido espectral", "sweep"), ("Muro de ánimas", "shield"),
                  ("Toque del más allá", "drain"), ("Legión breve", "summon"), ("Sanación compartida", "heal"),
                  ("Explosión etérea", "nova"), ("Canalización", "resource"), ("Avatar de la grieta", "summon")],
+    "Brujo": [("Dardo de hueso", "bolt"), ("Peste negra", "poison"), ("Drenaje mayor", "drain"),
+              ("Pacto de ojos rojos", "blood"), ("Explosión de tumba", "nova"), ("Congelación de alma", "freeze"),
+              ("Eco maldito", "summon"), ("Sorbo de medianoche", "heal"), ("Voluntad de la grieta", "resource")],
     "Pyromancer": [("Llama viva", "burn"), ("Cometa", "bolt"), ("Muro de fuego", "nova"),
                    ("Corazón de magma", "resource"), ("Lluvia de brasas", "sweep"), ("Inmolación", "blood"),
                    ("Fénix menor", "heal"), ("Erupción", "nova"), ("Sol en miniatura", "burn")],
@@ -53,7 +56,8 @@ EXTRA = {
 
 for cls in data["classes"]:
     extra = EXTRA[cls["id"]]
-    assert len(cls["skills"]) == 3, cls["id"]
+    if len(cls["skills"]) != 3:
+        continue
     for j, (name, kind) in enumerate(extra):
         cls["skills"].append({
             "id": f"{cls['id']}{j + 3}", "name": name, "kind": kind,

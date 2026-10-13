@@ -162,7 +162,7 @@ canvas{width:100%;height:100%;display:block;image-rendering:pixelated;touch-acti
 #skillbar{display:flex;flex-direction:column;gap:6px}
 #skillbar button{position:relative}
 #skillbar button:disabled{opacity:.35}
-#skillbar button .skillicon{width:25px;height:25px;background-size:300px 200px}
+#skillbar button .skillicon{width:25px;height:25px;background-size:300px 225px}
 #skillbar button small{position:absolute;right:2px;bottom:1px;font-size:.52em;color:#ffe1a1;text-shadow:0 1px 2px #000}
 #status{font-size:.68em;min-height:19px;padding:2px 10px;color:#a9c0cf;background:#0c1626;border-top:1px solid rgba(75,106,138,.35)}
 
@@ -204,7 +204,7 @@ th{color:var(--gold)}
   .bar i{transition:none}
 }
 .itemicon{display:inline-block;width:32px;height:32px;background-image:url("./assets/items.png");background-size:512px 448px;image-rendering:pixelated;vertical-align:middle;margin-right:8px}
-.skillicon{background-image:url("./assets/skills.png");background-size:240px 160px}
+.skillicon{background-image:url("./assets/skills.png");background-size:240px 180px}
 
 /* ============ TEXTO LEGIBLE ============ */
 dialog{font-size:16.5px}
@@ -221,7 +221,7 @@ dialog small{color:#a9c0cf;line-height:1.45}
 .tnode.lit{border-color:var(--gold);box-shadow:0 0 12px rgba(242,193,78,.18)}
 .tnode-ico{display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:0 auto 8px;border-radius:50%;background:#0c1524;border:2px solid var(--edge2)}
 .tnode.lit .tnode-ico{border-color:var(--gold)}
-.tnode-ico .skillicon{width:30px;height:30px;background-size:360px 240px}
+.tnode-ico .skillicon{width:30px;height:30px;background-size:360px 270px}
 .tnode h4{margin:2px 0 6px;font-size:1em}
 .tnode p{font-size:.86em;margin:6px 0}
 .tnode small{display:block;margin-bottom:8px}
@@ -325,7 +325,7 @@ body.lefty #toolbar{right:auto;left:8px}
 .stage-stats{max-width:340px;margin:12px auto;text-align:left}
 .stage-skills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
 .skillchip{display:flex;flex-direction:column;align-items:center;gap:3px;background:#0d1626;border:1px solid var(--edge);border-radius:10px;padding:7px 10px}
-.skillchip .skillicon{width:26px;height:26px;background-size:312px 208px}
+.skillchip .skillicon{width:26px;height:26px;background-size:312px 234px}
 .skillchip small{font-size:.66em}
 .stage-lore{color:#d5e3ea;line-height:1.5}
 .creator-side{display:grid;gap:10px}
