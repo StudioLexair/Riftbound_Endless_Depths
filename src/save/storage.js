@@ -1,6 +1,6 @@
 export const SAVE_VERSION=4;
 const NAME='riftbound-depths';
-export function emptyMeta(){return {shards:0,upgrade:0,unlocked:[0,1,2],achievements:[],stats:{},records:[],characters:[]};}
+export function emptyMeta(){return {shards:0,upgrade:0,unlocked:[0,1,2],achievements:[],stats:{},records:[],characters:[],companion:false,bestiary:{},lastJournal:[]};}
 export function defaults(){return {music:true,sfx:true,volume:.35,haptics:false,reduced:false,quality:'normal',ui:1,language:'es',textsize:'M',lefty:false};}
 function finite(n,min,max){return Number.isFinite(n)&&n>=min&&n<=max;}
 export function validate(save){

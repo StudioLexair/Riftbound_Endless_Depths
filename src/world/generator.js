@@ -38,9 +38,10 @@ export function generate(seed,depth){
  }
  const bp=place(rooms[8]);const boss=DATA.bosses[biome];const scale=1+(depth-1)*.1;
  if(bp)enemies.push({...bp,uid:++eid,def:boss.id,hp:Math.round(boss.hp*scale),maxHp:Math.round(boss.hp*scale),statuses:{},clock:0,turns:0,boss:true,phase:1});
+ let secret=null;outer:for(const room of rooms.slice(1,8)){for(let t=0;t<30;t++){const x=room.x-1+Math.floor(random()*(room.w+2)),y=room.y-1+Math.floor(random()*(room.h+2));if(tiles[y]?.[x]===0&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>tiles[y+dy]?.[x+dx]===1)){secret={x,y};break outer;}}}
  const special={room:4,kind:biome,name:['Claro sanador','Cámara del eco','Forja dormida','Gruta resonante','Altar de ceniza','Remanso de mareas'][biome],seen:false};
  // Room geometry, object placement and biome-specific walls are persisted as one active streamed sector.
- return {depth,biome,tiles,rooms,start,exit,objects,enemies,seen:[],bossDead:false,nextId:eid+1,special};
+ return {depth,biome,tiles,rooms,start,exit,objects,enemies,seen:[],bossDead:false,nextId:eid+1,special,secret};
 }
 export function isFloor(world,x,y){return world.tiles[y]?.[x]===1;}
 export function lineClear(world,a,b){let x=a.x,y=a.y;const dx=Math.abs(b.x-x),sx=x<b.x?1:-1,dy=-Math.abs(b.y-y),sy=y<b.y?1:-1;let err=dx+dy;

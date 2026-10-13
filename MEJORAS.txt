@@ -1,6 +1,6 @@
 RIFTBOUND: ENDLESS DEPTHS — LISTA COMPLETA DE MEJORAS POSIBLES
 ================================================================
-Generada tras las versiones 2.0–2.6. Actualizada en la 2.8.0. Ordenada por impacto para el jugador.
+Generada tras las versiones 2.0–2.6. Actualizada en la 2.9.0. Ordenada por impacto para el jugador.
 Leyenda: [HECHO] ya aplicado · [PROX] siguiente paso natural · [IDEA] a valorar
 
 A. JUGABILIDAD Y SISTEMAS
@@ -10,9 +10,9 @@ A. JUGABILIDAD Y SISTEMAS
 [HECHO] Conjunto (sets) de equipo: bonificaciones por llevar 2/3 piezas del mismo material.
 [HECHO] Encantamientos en la fragua (herrero, Templar): gastar oro/fragmentos para anadir un efecto a un arma.
 [HECHO] Afijos aleatorios en el botin raro+ (8 afijos con bonus) ("de fuego", "del ladron"...) ademas de la rareza.
-[PROX]  Durabilidad y reparacion en el herrero para dar uso al oro en late game.
-[PROX]  Mascota/companero invocable permanente que recoge oro (evoluciona con fragmentos).
-[PROX]  Dificultad por sector elegible al entrar al portal (Normal/Pesadilla, mejor botin).
+[HECHO] Durabilidad (desgaste y penalizacion) y reparacion en el herrero para dar uso al oro en late game.
+[HECHO] Companero eco (30 fragmentos): recoge botin cercano y +2 oro por baja. Pendiente: evolucion.
+[HECHO] Dificultad elegible en cada portal (Normal/Pesadilla: +35% vida enemiga, +50% oro, +25% XP).
 [IDEA]   Nuevas clases 8 y 9 (Artificiero con trampas; Monje sin armas) con sus 12 habilidades.
 [IDEA]   Talentos de clase al nivel 10/20: elegir 1 de 3 mutaciones que cambian una habilidad.
 [IDEA]   Eventos de sala encadenados con decisiones y finales distintos segun lo hecho antes.
@@ -26,9 +26,9 @@ B. MUNDO Y EXPLORACION
 [HECHO] Mapa con marcadores (portal, NPC, cofre, botín) y marco de la sala especial.
 [HECHO] Cofres y puertas con sprites/detalle del pack en vez de rectangulos dibujados.
 [HECHO] Portal de la grieta animado con particulas propio animado (portal de la grieta con particulas).
-[IDEA]   Zonas secretas tras muros agrietados (golpear el muro para revelar).
+[HECHO] Zonas secretas tras muros agrietados (empujar la pared la abre y hay cofre).
 [IDEA]   Altares que ofrecen pacto: maldicion aleatoria a cambio de buff de run.
-[IDEA]   Clima ambiental por bioma: hojas, ember, lluvia de ceniza, nieve (solo visual).
+[HECHO] Clima ambiental por bioma (motas, brasas y burbujas segun el sector).
 
 C. GRAFICOS Y ANIMACION
 -----------------------
@@ -47,8 +47,8 @@ D. INTERFAZ Y EXPERIENCIA
 [PROX]  Tooltip avanzado tambien en tienda y al comparar: diferencias en verde/rojo por stat.
 [PROX]  Arrastrar y soltar entre mochila y slots en PC; en movil, tocar slot destino tras elegir objeto.
 [HECHO] Filtros de mochila por tipo (armas/armaduras/joyas/pociones) y orden por nivel/rareza.
-[PROX]  Registro de dano (DPS de los ultimos turnos) en la pausa para entender las derrotas.
-[PROX]  Diario de run: linea temporal de eventos (botin legendario, jefes, muertes) en records.
+[HECHO] Registro de dano en la pausa (infligido, recibido y dano/turno).
+[HECHO] Diario de run en Records (sectores, jefes y nivel) de la ultima partida.
 [IDEA]   Temas de interfaz (Grieta, Pergamino, Sangre) elegibles en ajustes.
 [IDEA]   Tutorial interactivo de 60 segundos en la primera run (mover, atacar, equipar, habilidad).
 
