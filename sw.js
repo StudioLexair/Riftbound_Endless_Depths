@@ -1,5 +1,5 @@
-const VERSION='riftbound-v2.1.0';
-const FILES=["./", "./index.html", "./style.css", "./manifest.webmanifest", "./src/audio/synth.js", "./src/core/main.js", "./src/core/random.js", "./src/game/game.js", "./src/game/renderer.js", "./src/input/controls.js", "./src/save/storage.js", "./src/ui/interface.js", "./src/world/generator.js", "./data/content.js", "./assets/sprites/atlas.png", "./assets/sprites/biome-tiles.png", "./assets/sprites/props.png", "./assets/ui/icon-192.png", "./assets/ui/icon-512.png", "./assets/ui/logo.svg"];
+const VERSION='riftbound-v2.2.0';
+const FILES=["./", "./index.html", "./style.css", "./manifest.webmanifest", "./src/audio/synth.js", "./src/core/main.js", "./src/core/random.js", "./src/game/game.js", "./src/game/renderer.js", "./src/input/controls.js", "./src/save/storage.js", "./src/ui/interface.js", "./src/world/generator.js", "./data/content.js", "./assets/sprites/atlas.png", "./assets/sprites/biome-tiles.png", "./assets/sprites/props.png", "./assets/ui/icon-192.png", "./assets/ui/icon-512.png", "./assets/ui/logo.svg", "./assets/ui/icons.png"];
 self.addEventListener('install',event=>event.waitUntil(caches.open(VERSION).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('riftbound-')&&k!==VERSION).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

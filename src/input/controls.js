@@ -20,6 +20,10 @@ export function bindInput(game,ui,renderer){
  // Optional single-finger swipe on the world; pointer events unify touch/mouse and cancellation.
  const canvas=document.querySelector('#world');let swipe=null;
  canvas.addEventListener('pointerdown',e=>{if(!allowed())return;swipe={x:e.clientX,y:e.clientY,id:e.pointerId};canvas.setPointerCapture(e.pointerId);});
- canvas.addEventListener('pointerup',e=>{if(!swipe||swipe.id!==e.pointerId)return;const dx=e.clientX-swipe.x,dy=e.clientY-swipe.y;swipe=null;if(Math.max(Math.abs(dx),Math.abs(dy))<25)return;move(...(Math.abs(dx)>Math.abs(dy)?[Math.sign(dx),0]:[0,Math.sign(dy)]));});
+ canvas.addEventListener('pointerup',e=>{if(!swipe||swipe.id!==e.pointerId)return;const dx=e.clientX-swipe.x,dy=e.clientY-swipe.y;swipe=null;if(Math.max(Math.abs(dx),Math.abs(dy))>=25){move(...(Math.abs(dx)>Math.abs(dy)?[Math.sign(dx),0]:[0,Math.sign(dy)]));return;}
+ // Toque corto: moverse hacia la direccion tocada respecto al centro (el personaje); el centro espera.
+ const r=canvas.getBoundingClientRect(),tx=e.clientX-(r.left+r.width/2),ty=e.clientY-(r.top+r.height/2);
+ if(Math.hypot(tx,ty)<24){if(allowed()&&!renderer.map)game.wait();return;}
+ move(...(Math.abs(tx)>Math.abs(ty)?[Math.sign(tx),0]:[0,Math.sign(ty)]));});
  canvas.addEventListener('pointercancel',()=>swipe=null);
 }

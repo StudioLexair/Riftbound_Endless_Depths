@@ -1,15 +1,15 @@
 {
   "PLAY_WINDOWS.bat": "9cbf5fead798054eea36138c1b3cb4f36d95d5fc699fcd395282ff04daf4f000",
   "ASSET_LICENSES.md": "9b21a1b7c4c97329c06327f1b4489acc5a8e9be8335f321ec04d29aa785ac08c",
-  "sw.js": "fc450cae485ae0139286a6ee5072c4121eeec9d87b27c638969e542f9506dbe7",
+  "sw.js": "3c1e434b978e8496e90f13ff3a47b5e5163b29c7e00f2d1b7d816ff8a95486ba",
   "LICENSE": "5b4c1296c3c32054b46bd09a7c939165cfe761226143248a482e4ecf92aab52f",
   "serve.py": "984156d3ee5541650ef6e84dec6104698534aff3dde3c00a44a1c87024f96276",
   "PLAY_MAC_LINUX.sh": "a31342ffd9b907817fde6abc732ab4796c52210752689b2735db0bdd37018b6e",
   "netlify.toml": "013d97034f6abaf634b8bcc7cb673554d7ac33ad0dbc7acbba1b2e339f4f2e7b",
   "manifest.webmanifest": "10301f876b2b49b966dd0783af230720ab983b52281b8e53679bad98353512a0",
-  "index.html": "bb5a81cda6e0e3933ff4bf347e198e32c2ff2ee79eb82aa0543da852d614f395",
+  "index.html": "c78597804979b0e37756489763020859977b3e764062a30b4378be77194a15a7",
   "VALIDATION.md": "a8427f3e478bcb796bc3a1a418885743f1e5d7d5b50ca80735f5689869038cf3",
-  "style.css": "228e4c60b76625bb1505e9b4ecb566ced698f7782d5bee96dfcd6ca1d512a643",
+  "style.css": "cfa208e375699f3d3962c9e7d782a6db6b3dc6a76109f49174d941fe17036adc",
   ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "README.md": "eae717aee0b0c420f99fcc376b61077e911e25e6509fb9e7f32eba29a6821eea",
   "tests/index.html": "56d62924b4b72599695e0fe1bf025698d87018f97ca93129ea2f1259c0b3626a",
@@ -20,8 +20,8 @@
   "src/world/generator.js": "4009ce179855affed5f9ad173c84470940e95141a66c034f601a45bc6bda8e24",
   "src/core/random.js": "6232416a7601f4faee7b5c53d48e9c113748733a20979bf5db4bc692c305d80a",
   "src/core/main.js": "5da9a7810c735145f870ef76a05c2e2d8835461d94cebc7285be5d7e9d50fd9f",
-  "src/input/controls.js": "04bd6aa3b87a345bbab50474f55a3a71fc6e601ff51d9eecab1e3ee43dd39478",
-  "src/ui/interface.js": "ee164d9c5eaf4295344f99949d230cab46bf5b9060622ffabbba86babdcdabd2",
+  "src/input/controls.js": "57f44b03a787bdd83753f3ba087d7e1a5c4674c930ea17a688c286dcd6335738",
+  "src/ui/interface.js": "db329c28b0bb7c1cd44e52ee8a6fea52a0df46209c1f57a6fc0523ce60c5cf85",
   "src/save/storage.js": "0c3e2878756aa8ae6e2c34734c6581d144ae3cb5f107a4e32e9504783c153466",
   "src/game/game.js": "d463b0ab7ffcd79e43771c8c213ce310b80a2494c27126a66d1f79827b1d80f5",
   "src/game/renderer.js": "e0689ced70fbc0689af44d756899cecc8e05a3c8d002ddbbf022bea2591e6a8f",
@@ -33,5 +33,7 @@
   "assets/sprites/biome-tiles.png": "4dac080b3aed3804bc8c316014e44537c78867d72a9e6f8c086b928ebd0c39a6",
   "assets/sprites/props.png": "9ddfb2b751929c8b722e5a8542ded597bcb447492777cbaaeb7a0b60a63ce60e",
   "tools/build_crawler_assets.py": "413e041fd82ec6cb24cf0143a9c71eb96cbaac256b52c7097efb1e57e604a824",
-  "tools/crawler-manifest.json": "2b0650591f53a8481a6611e3dfe7c7a8cc8f6be1497b76894d7428caf34f5285"
+  "tools/crawler-manifest.json": "2b0650591f53a8481a6611e3dfe7c7a8cc8f6be1497b76894d7428caf34f5285",
+  "assets/ui/icons.png": "f40436e10e735f5a0c814f1cd785e9ec12865fe48dcfad0ac79e4ee6d8a9821d",
+  "tools/build_icons.py": "6bad520aa7bf4b7a3441c15caaf647fb988ee505197082252a5865f3206c3782"
 }
