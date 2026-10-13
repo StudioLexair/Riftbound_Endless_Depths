@@ -292,3 +292,13 @@ input,select,textarea{user-select:text;-webkit-user-select:text}
 #ctxmenu .ctx-note{color:#a9c0cf;font-size:.85em;margin:2px 0}
 .tnode.slotcard.sel{border-color:var(--gold)}
 .tree.slots{margin-bottom:6px}
+
+/* ============ EXTRAS SISTEMAS ============ */
+.bagfilters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:8px 0 2px}
+.chipbtn{padding:5px 12px;border-radius:99px;font-size:.72em;letter-spacing:.06em}
+.chipbtn.sel{border-color:var(--gold);color:var(--gold)}
+body.textS dialog{font-size:15px}
+body.textL dialog{font-size:18.5px}
+body.lefty #controls{right:auto;left:8px}
+body.lefty #movepad{left:auto;right:10px}
+body.lefty #toolbar{right:auto;left:8px}

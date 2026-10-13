@@ -38,8 +38,9 @@ export function generate(seed,depth){
  }
  const bp=place(rooms[8]);const boss=DATA.bosses[biome];const scale=1+(depth-1)*.1;
  if(bp)enemies.push({...bp,uid:++eid,def:boss.id,hp:Math.round(boss.hp*scale),maxHp:Math.round(boss.hp*scale),statuses:{},clock:0,turns:0,boss:true,phase:1});
+ const special={room:4,kind:biome,name:['Claro sanador','Cámara del eco','Forja dormida','Gruta resonante','Altar de ceniza','Remanso de mareas'][biome],seen:false};
  // Room geometry, object placement and biome-specific walls are persisted as one active streamed sector.
- return {depth,biome,tiles,rooms,start,exit,objects,enemies,seen:[],bossDead:false,nextId:eid+1};
+ return {depth,biome,tiles,rooms,start,exit,objects,enemies,seen:[],bossDead:false,nextId:eid+1,special};
 }
 export function isFloor(world,x,y){return world.tiles[y]?.[x]===1;}
 export function lineClear(world,a,b){let x=a.x,y=a.y;const dx=Math.abs(b.x-x),sx=x<b.x?1:-1,dy=-Math.abs(b.y-y),sy=y<b.y?1:-1;let err=dx+dy;

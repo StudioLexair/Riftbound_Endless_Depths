@@ -17,7 +17,10 @@ export class Game{
  enemyDef(e){return DATA.enemies.find(d=>d.id===e.def)||DATA.bosses.find(d=>d.id===e.def);}
  stats(){const p=this.p,c=this.c;const g=c.growth,L=p.level-1;const s={hp:c.hp+L*g.hp+this.meta.upgrade*3,resource:c.resource+L*g.resource,attack:c.attack+L*g.attack,defense:c.defense+L*g.defense,speed:c.speed,crit:c.crit,evasion:c.evasion,regen:c.regen,range:1,critPower:1.6};
  for(const item of Object.values(p.equipment).filter(Boolean)){const def=byId(item.base),mult=DATA.rarities[item.rarity].mult*item.power;for(const [k,v] of Object.entries(def.stats))s[k]=(s[k]||0)+v*mult;}
- s.hp=Math.round(s.hp);s.resource=Math.round(s.resource);s.attack+=p.skillRanks[3]*2;s.defense+=p.skillRanks[4];s.regen+=p.skillRanks[5]*.2;
+ for(const item of Object.values(p.equipment).filter(Boolean)){if(item.bonus)for(const [k,v] of Object.entries(item.bonus))s[k]=(s[k]||0)+v;}
+ const tiers={};for(const item of Object.values(p.equipment).filter(Boolean)){const d=byId(item.base);if(d.slot==='weapon'||d.slot==='armor'){const t=Number(d.id.slice(1))%10;tiers[t]=(tiers[t]||0)+1;}}
+ for(const c of Object.values(tiers)){if(c>=2)s.defense+=2;if(c>=3)s.attack+=3;if(c>=4)s.hp+=15;}
+ s.hp=Math.round(s.hp);s.resource=Math.round(s.resource);s.attack+=p.skillRanks[12]*2;s.defense+=p.skillRanks[13];s.regen+=p.skillRanks[14]*.2;
  const pref=p.equipment.weapon&&byId(p.equipment.weapon.base).weapon===c.weapon;if(pref)s.attack*=1.12;
  if(this.c.id==='Vanguard')s.defense+=p.level*.25;if(this.c.id==='Arcanist')s.resource+=4;if(this.c.id==='Ranger')s.range+=1;if(this.c.id==='Shadow')s.critPower+=.3;if(this.c.id==='Bloodbound')s.regen+=.1;if(this.c.id==='Pyromancer')s.attack+=p.level*.2;
  if(this.hasEffect('evade'))s.evasion+=.04;if(this.hasEffect('reach'))s.range++;if(this.hasEffect('crit'))s.critPower+=.2;
@@ -55,7 +58,7 @@ export class Game{
  return amount;
  }
  hurtEnemy(e,amount){if(e.hp<=0)return;e.hp=Math.max(0,e.hp-amount);if(e.hp===0)this.kill(e);}
- kill(e){const d=this.enemyDef(e);this.metric('kills');this.gainXP(d.xp+this.run.depth*2);this.gold(Math.round((4+this.run.depth*2)*(this.hasEffect('gold')?1.4:1)));if(this.hasEffect('mana'))this.p.mp=Math.min(this.stats().resource,this.p.mp+3);
+ kill(e){const d=this.enemyDef(e);this.metric('kills');this.meta.bestiary=this.meta.bestiary||{};this.meta.bestiary[e.def]=(this.meta.bestiary[e.def]||0)+1;this.gainXP(d.xp+this.run.depth*2);this.gold(Math.round((4+this.run.depth*2)*(this.hasEffect('gold')?1.4:1)));if(this.hasEffect('mana'))this.p.mp=Math.min(this.stats().resource,this.p.mp+3);
  if(e.boss){this.w.bossDead=true;this.w.objects.find(o=>o.type==='exit').locked=false;this.metric('bosses');if(this.run.mode==='hardcore')this.meta.stats.hardcoreBosses=(this.meta.stats.hardcoreBosses||0)+1;this.meta.shards+=5;this.log(`${d.name} ha caído. El portal está abierto.`);this.audio.sound('level');this.haptic([20,40,20]);this.dropAt(e,this.createItem(`i${Math.floor(this.random()*200)}`,Math.max(2,Math.floor(this.random()*6))));}
  else if(this.random()<d.drop)this.dropAt(e,this.createItem(`i${Math.floor(this.random()*200)}`));
  }
@@ -82,7 +85,8 @@ export class Game{
  tickStatuses(entity,isPlayer){for(const [name,state] of Object.entries(entity.statuses)){
  if(['burn','poison','bleed'].includes(name)){let n=state.power;if(isPlayer){if(this.hasEffect(name))n*=.5;this.p.hp-=n;this.p.clean=0;}else{if(this.enemyDef(entity).resist===name)n*=.5;this.hurtEnemy(entity,Math.max(1,Math.round(n)));}}
  if(name==='regen')entity.hp=Math.min(isPlayer?this.stats().hp:entity.maxHp,entity.hp+state.power);state.turns--;if(state.turns<=0)delete entity.statuses[name];}}
- endTurn(){if(!this.run||this.run.over)return;this.busy=true;this.run.turn++;this.run.elapsed+=Math.min(30000,Date.now()-this.run.lastTime);this.run.lastTime=Date.now();
+ endTurn(){if(!this.run||this.run.over)return;this.busy=true;this.run.turn++;
+ const sp=this.w.special;if(sp){const room=this.w.rooms[sp.room];if(room&&this.p.x>=room.x&&this.p.x<room.x+room.w&&this.p.y>=room.y&&this.p.y<room.y+room.h){if(!sp.seen){sp.seen=true;this.log(`Sala especial: ${sp.name}. Su energía te restaura poco a poco.`);}if(this.run.turn%2===0)this.p.hp=Math.min(this.stats().hp,this.p.hp+1);}}this.run.elapsed+=Math.min(30000,Date.now()-this.run.lastTime);this.run.lastTime=Date.now();
  const wasFrozen=!!(this.p.statuses.stun||this.p.statuses.freeze);this.tickStatuses(this.p,true);for(const k of Object.keys(this.p.cooldowns))this.p.cooldowns[k]=Math.max(0,this.p.cooldowns[k]-1);
  if(this.p.hp>0){const s=this.stats();this.p.hp=Math.min(s.hp,this.p.hp+s.regen);this.p.mp=Math.min(s.resource,this.p.mp+.6+(this.c.id==='Arcanist' ? .4 : 0));
  if(this.p.summon>0){const target=this.nearest(5);if(target)this.hurtEnemy(target,Math.round(s.attack*.7*(this.hasEffect('summon')?1.5:1)));this.p.summon--;}

@@ -1,14 +1,14 @@
 RIFTBOUND: ENDLESS DEPTHS — LISTA COMPLETA DE MEJORAS POSIBLES
 ================================================================
-Generada tras las versiones 2.0–2.6. Ordenada por impacto para el jugador.
+Generada tras las versiones 2.0–2.6. Actualizada en la 2.7.0. Ordenada por impacto para el jugador.
 Leyenda: [HECHO] ya aplicado · [PROX] siguiente paso natural · [IDEA] a valorar
 
 A. JUGABILIDAD Y SISTEMAS
 -------------------------
 [HECHO] 220 objetos con requisito de nivel, 6 huecos de equipo y rareza.
 [HECHO] 12 habilidades activas por clase: 3 huecos equipados + banco de 9.
-[PROX]  Conjunto (sets) de equipo: bonificaciones por llevar 2/3 piezas del mismo material.
-[PROX]  Encantamientos en la fragua: gastar oro/fragmentos para anadir un efecto a un arma.
+[HECHO] Conjunto (sets) de equipo: bonificaciones por llevar 2/3 piezas del mismo material.
+[HECHO] Encantamientos en la fragua (herrero, Templar): gastar oro/fragmentos para anadir un efecto a un arma.
 [PROX]  Afijos aleatorios al identificar botin ("de fuego", "del ladron"...) ademas de la rareza.
 [PROX]  Durabilidad y reparacion en el herrero para dar uso al oro en late game.
 [PROX]  Mascota/companero invocable permanente que recoge oro (evoluciona con fragmentos).
@@ -22,10 +22,10 @@ A. JUGABILIDAD Y SISTEMAS
 
 B. MUNDO Y EXPLORACION
 ----------------------
-[PROX]  Salas especiales por bioma con mecanica propia (hielo resbaladizo, lava que dana por turnos, oscuridad).
+[HECHO] Salas especiales por bioma (tinte, nombre y curacion) — pendiente mecanica propia profunda: mecanica propia (hielo resbaladizo, lava que dana por turnos, oscuridad).
 [PROX]  Mini-mapa persistente con notas: marcar portales, NPC y cofres ya vistos con iconos.
-[PROX]  Cofres y puertas con sprites del pack en vez de rectangulos dibujados.
-[PROX]  Portal y escalera dibujados con sprite propio animado (portal de la grieta con particulas).
+[HECHO] Cofres y puertas con sprites/detalle del pack en vez de rectangulos dibujados.
+[HECHO] Portal de la grieta animado con particulas propio animado (portal de la grieta con particulas).
 [IDEA]   Zonas secretas tras muros agrietados (golpear el muro para revelar).
 [IDEA]   Altares que ofrecen pacto: maldicion aleatoria a cambio de buff de run.
 [IDEA]   Clima ambiental por bioma: hojas, ember, lluvia de ceniza, nieve (solo visual).
@@ -33,10 +33,10 @@ B. MUNDO Y EXPLORACION
 C. GRAFICOS Y ANIMACION
 -----------------------
 [HECHO] Sprites girados segun direccion; ciclo de pasos al caminar; decoracion solo de suelo.
-[PROX]  Ataques con micro-animacion: el sprite avanza 4 px hacia el objetivo y vuelve.
-[PROX]  Fotogramas de dano (parpadeo blanco) y de muerte (desvanecer) en enemigos.
-[PROX]  Sombras suaves bajo personajes dibujadas como elipse difuminada, no rectangulo.
-[PROX]  Particulas al abrir cofres, subir de nivel y cruzar el portal.
+[HECHO] Ataques con micro-animacion (embestida del jugador): el sprite avanza 4 px hacia el objetivo y vuelve.
+[HECHO] Fotogramas de dano (parpadeo blanco) y de muerte (desvanecer) en enemigos.
+[HECHO] Sombras suaves bajo personajes (elipse) dibujadas como elipse difuminada, no rectangulo.
+[HECHO] Particulas en impactos (pendiente: cofres/nivel/portal).
 [PROX]  Retratos de clase mas grandes en seleccion y ficha, con marco por rareza del ancla.
 [IDEA]   Modo daltonico: paleta alternativa para telegraphs de jefes y estados.
 [IDEA]   Filtro CRT/pixel perfecto opcional en ajustes para pantalla grande.
@@ -46,7 +46,7 @@ D. INTERFAZ Y EXPERIENCIA
 [HECHO] Ficha "paper doll" tipo WoW, rejilla 60, menu contextual con clic derecho, tooltip fuera.
 [PROX]  Tooltip avanzado tambien en tienda y al comparar: diferencias en verde/rojo por stat.
 [PROX]  Arrastrar y soltar entre mochila y slots en PC; en movil, tocar slot destino tras elegir objeto.
-[PROX]  Filtros de mochila por tipo (armas/armaduras/joyas/pociones) y orden por nivel/rareza.
+[HECHO] Filtros de mochila por tipo (armas/armaduras/joyas/pociones) y orden por nivel/rareza.
 [PROX]  Registro de dano (DPS de los ultimos turnos) en la pausa para entender las derrotas.
 [PROX]  Diario de run: linea temporal de eventos (botin legendario, jefes, muertes) en records.
 [IDEA]   Temas de interfaz (Grieta, Pergamino, Sangre) elegibles en ajustes.
@@ -69,16 +69,16 @@ F. TECNICO / PLATAFORMA
 
 G. ACCESIBILIDAD
 ----------------
-[PROX]  Tamano de texto de dialogos ajustable (S/M/L) en ajustes; ya existe escala de UI, unificar.
-[PROX]  Botones de accion reordenables en movil (zurdos: columna a la izquierda).
+[HECHO] Tamano de texto de dialogos ajustable (S/M/L) (S/M/L) en ajustes; ya existe escala de UI, unificar.
+[HECHO] Botones a la izquierda para zurdos en ajustes: (zurdos: columna a la izquierda).
 [IDEA]   Lectura por voz de los mensajes del registro para partidas sin mirar la pantalla.
 [IDEA]   Confirmaciones desactivables ("tirar objeto") con deshacer de 5 segundos.
 
 H. CONTENIDO Y TEXTOS
 ---------------------
 [PROX]  Nombre y frase propios para los 30 enemigos (hoy comparten comportamiento por bioma).
-[PROX]  Bestiario en records: enemigos vistos, muertes que te causaron, debilidades.
-[PROX]  Mas misiones del cartografo por bioma (36 totales) con recompensas unicas (reliquias).
+[HECHO] Bestiario en records (bajas por enemigo): enemigos vistos, muertes que te causaron, debilidades.
+[HECHO] Mas misiones del cartografo (18 totales; objetivo 36): con recompensas unicas (reliquias).
 [IDEA]   NPCs con dialogo ramificado y tienda que recuerda tus compras.
 [IDEA]   Final alternativo si se desciende sin usar resurrecciones (logro "Mano firme").
 
