@@ -34,7 +34,7 @@ export function generate(seed,depth){
   for(let n=0;n<count;n++){const p=place(room);if(!p)continue;const def=DATA.enemies[biome*5+Math.floor(random()*5)];const scale=1+(depth-1)*.09;enemies.push({...p,uid:++eid,def:def.id,hp:Math.round(def.hp*scale),maxHp:Math.round(def.hp*scale),statuses:{},clock:0,turns:0});}
   for(const type of ['chest','trap',...(r%2===0?['event']:[])]){const p=place(room);if(p)objects.push({...p,type,event:['altar','cursed','shrine','fork','secret','cache','champion'][Math.floor(random()*7)],used:false});}
   if(random()<.5){const p=place(room);if(p)objects.push({...p,type:'door',open:false});}
-  const props=2+Math.floor(random()*3);for(let k=0;k<props;k++){const p=place(room);if(p)objects.push({...p,type:'prop',sprite:Math.floor(random()*16),used:false});}
+  const CLEANPROPS=[0,7,8,9,10,11,12,13];const props=1+Math.floor(random()*3);for(let k=0;k<props;k++){let p=null;for(let t=0;t<40&&!p;t++){const cand=place(room);if(!cand)break;const nearWall=[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>tiles[cand.y+dy]?.[cand.x+dx]!==1);if(nearWall)p=cand;else occupied.delete(key(cand.x,cand.y));}if(!p)p=place(room);if(p)objects.push({...p,type:'prop',sprite:CLEANPROPS[Math.floor(random()*CLEANPROPS.length)],used:false});}
  }
  const bp=place(rooms[8]);const boss=DATA.bosses[biome];const scale=1+(depth-1)*.1;
  if(bp)enemies.push({...bp,uid:++eid,def:boss.id,hp:Math.round(boss.hp*scale),maxHp:Math.round(boss.hp*scale),statuses:{},clock:0,turns:0,boss:true,phase:1});

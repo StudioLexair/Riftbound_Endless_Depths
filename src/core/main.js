@@ -6,6 +6,7 @@ import {Interface} from '../ui/interface.js';
 import {bindInput} from '../input/controls.js';
 
 const status=document.querySelector('#status');
+if(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent)||'ontouchstart' in window)document.body.classList.add('touch');
 const loading=document.querySelector('#loading');
 const loadBar=document.querySelector('#load-bar');
 const loadText=document.querySelector('#load-text');

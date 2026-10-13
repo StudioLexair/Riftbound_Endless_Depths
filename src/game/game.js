@@ -102,8 +102,8 @@ export class Game{
  }
  enemyAttack(e,mult=1){const d=this.enemyDef(e);this.damagePlayer((d.attack+this.run.depth*.7)*mult*(e.statuses.weak ? .6 : 1),e);if(this.p.hp>0&&d.status&&this.random()<.23)this.status(this.p,d.status,3,2);}
  enemyMove(e,away){const blocked=new Set(this.w.enemies.filter(a=>a!==e&&a.hp>0).map(a=>key(a.x,a.y)));this.w.objects.filter(o=>!o.used&&o.type==='npc').forEach(o=>blocked.add(key(o.x,o.y)));
- if(away){const options=[[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>({x:e.x+dx,y:e.y+dy})).filter(p=>isFloor(this.w,p.x,p.y)&&!blocked.has(key(p.x,p.y))&&distance(p,this.p)>distance(e,this.p)&&!this.w.objects.some(o=>o.type==='door'&&!o.open&&o.x===p.x&&o.y===p.y));if(options.length){Object.assign(e,options[Math.floor(this.random()*options.length)]);return true;}return false;}
- const step=pathStep(this.w,e,this.p,blocked);if(step&&distance(step,this.p)>0){e.x=step.x;e.y=step.y;return true;}return false;
+ if(away){const options=[[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>({x:e.x+dx,y:e.y+dy})).filter(p=>isFloor(this.w,p.x,p.y)&&!blocked.has(key(p.x,p.y))&&distance(p,this.p)>distance(e,this.p)&&!this.w.objects.some(o=>o.type==='door'&&!o.open&&o.x===p.x&&o.y===p.y));if(options.length){const dest=options[Math.floor(this.random()*options.length)];if(dest.x!==e.x)e.face=Math.sign(dest.x-e.x);Object.assign(e,dest);return true;}return false;}
+ const step=pathStep(this.w,e,this.p,blocked);if(step&&distance(step,this.p)>0){if(step.x!==e.x)e.face=Math.sign(step.x-e.x);e.x=step.x;e.y=step.y;return true;}return false;
  }
  spawn(e){for(const [dx,dy] of [[1,0],[0,1],[-1,0],[0,-1]]){const x=e.x+dx,y=e.y+dy;if(!isFloor(this.w,x,y)||this.w.enemies.some(a=>a.hp>0&&a.x===x&&a.y===y)||(x===this.p.x&&y===this.p.y))continue;const d=DATA.enemies[this.w.biome*5];const hp=Math.round(d.hp*(1+this.run.depth*.08));this.w.enemies.push({x,y,uid:this.w.nextId++,def:d.id,hp,maxHp:hp,statuses:{},clock:0,turns:0});break;}}
  bossAct(e){e.phase=e.hp<e.maxHp*.45?2:1;const dist=distance(e,this.p),phase=e.phase,b=this.w.biome;

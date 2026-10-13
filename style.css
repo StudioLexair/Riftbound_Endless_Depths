@@ -263,3 +263,28 @@ dialog small{color:#a9c0cf;line-height:1.45}
 .bagcell.empty{border-color:#22334f;background:#0a1220}
 .bagcell.sel{outline:2px solid var(--gold);outline-offset:1px}
 .item.detail{margin-top:10px}
+
+/* ============ SIN SOMBRAS: diseno plano ============ */
+button,.card,.tnode,.qcard,.slot,.bagcell,.item,dialog,.chip,.charstats span,.tnode-ico{box-shadow:none!important}
+#toolbar button,#controls>button,#skillbar button{box-shadow:none}
+.tnode.lit{box-shadow:none}
+
+/* ============ CRUCETA SOLO EN MOVIL/TABLET ============ */
+#movepad{display:none}
+body.touch #movepad{display:grid;position:absolute;left:10px;bottom:10px;z-index:5;grid-template-columns:repeat(3,46px);grid-template-rows:repeat(3,46px);gap:4px}
+#movepad button{min-height:46px;padding:0;border-radius:10px;background:rgba(13,22,36,.88);border:1.5px solid var(--edge2);color:#cfe3de;font-size:15px}
+#movepad .up{grid-column:2;grid-row:1}#movepad .left{grid-column:1;grid-row:2}
+#movepad .waitb{grid-column:2;grid-row:2}#movepad .right{grid-column:3;grid-row:2}
+#movepad .down{grid-column:2;grid-row:3}
+
+/* ============ TOOLTIP DE OBJETOS (hover PC / detalle al tocar) ============ */
+.bagcell{position:relative}
+.slot{position:relative}
+.tip{display:none;position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:190px;z-index:40;background:#0b1424;border:1.5px solid var(--gold);border-radius:10px;padding:9px 10px;text-align:left;pointer-events:none}
+.tip b{display:block;font-size:.92em;margin-bottom:4px}
+.tip small{display:block;font-size:.74em;line-height:1.4;color:#c8d8de;margin-top:3px}
+.tip .tip-act{color:var(--gold)}
+.bagcell:hover .tip,.bagcell:focus-visible .tip,.slot:hover .tip{display:block}
+
+/* ============ ARBOL RESPONSIVE ============ */
+@media(max-width:640px){.tree{grid-template-columns:1fr 1fr}.tnode{padding:9px}.tnode p{font-size:.8em}}
