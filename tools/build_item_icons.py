@@ -136,63 +136,62 @@ for it in items:
 sheet.save(ROOT / "assets" / "items.png")
 print("OK items.png", sheet.size, len(items), "iconos")
 
-# ---------- iconos de habilidades: rejilla 3 (habilidad) x 7 (clase) ----------
+# ---------- iconos de habilidades: rejilla 12 (habilidad) x 8 (7 clases + pasivas) ----------
 CLASS_COL = [(150, 170, 200, 255), (120, 170, 255, 255), (140, 220, 140, 255), (200, 140, 220, 255),
              (235, 90, 100, 255), (150, 220, 220, 255), (250, 140, 70, 255)]
 
 
-def sk_shield(d, c): d.polygon([(8, 2), (12, 4), (12, 8), (8, 14), (4, 8), (4, 4)], fill=c, outline=INK); d.line([8, 4, 8, 11], fill=INK)
+def badge(d, c):
+    d.rounded_rectangle([1, 1, 14, 14], 3, fill=(16, 26, 44, 255), outline=c, width=1)
+
+
+def sk_shield(d, c): d.polygon([(8, 3), (11, 4), (11, 8), (8, 13), (5, 8), (5, 4)], fill=c, outline=INK); d.line([8, 5, 8, 10], fill=INK)
 def sk_sweep(d, c):
-    for a in (-2, 0, 2): d.line([8, 12, 8 + a * 2, 3], fill=c, width=2)
-    d.arc([2, 1, 14, 10], 180, 360, fill=GOLD, width=2)
-def sk_dash(d, c):
-    d.polygon([(3, 5), (9, 5), (13, 8), (9, 11), (3, 11), (6, 8)], fill=c, outline=INK); d.line([2, 13, 12, 13], fill=GOLD_D)
-def sk_bolt(d, c): d.polygon([(9, 1), (4, 9), (7, 9), (6, 15), (12, 6), (9, 6)], fill=c, outline=INK)
+    for a in (-2, 0, 2): d.line([8, 12, 8 + a * 2, 4], fill=c, width=2)
+    d.arc([3, 2, 13, 9], 180, 360, fill=GOLD, width=1)
+def sk_dash(d, c): d.polygon([(4, 5), (9, 5), (12, 8), (9, 11), (4, 11), (6, 8)], fill=c, outline=INK)
+def sk_bolt(d, c): d.polygon([(9, 2), (4, 9), (7, 9), (6, 14), (12, 6), (9, 6)], fill=c, outline=INK)
 def sk_freeze(d, c):
-    d.line([8, 2, 8, 14], fill=c, width=2); d.line([3, 5, 13, 11], fill=c, width=2); d.line([13, 5, 3, 11], fill=c, width=2)
-def sk_heal(d, c): d.rectangle([7, 3, 9, 13], fill=c); d.rectangle([4, 6, 12, 9], fill=c)
-def sk_poison(d, c): d.polygon([(8, 2), (12, 9), (10, 13), (6, 13), (4, 9)], fill=c, outline=INK); d.point([8, 10], fill=(255, 255, 255, 255))
-def sk_bleed(d, c):
-    d.polygon([(8, 1), (12, 8), (10, 13), (6, 13), (4, 8)], fill=(235, 90, 100, 255), outline=INK)
-    d.line([5, 14, 11, 14], fill=c)
-def sk_evade(d, c):
-    d.arc([3, 3, 13, 13], 90, 330, fill=c, width=2); d.polygon([(12, 2), (14, 6), (10, 5)], fill=c)
+    d.line([8, 3, 8, 13], fill=c, width=2); d.line([4, 5, 12, 11], fill=c, width=2); d.line([12, 5, 4, 11], fill=c, width=2)
+def sk_heal(d, c): d.rectangle([7, 4, 9, 12], fill=c); d.rectangle([4, 6, 12, 9], fill=c)
+def sk_poison(d, c): d.polygon([(8, 3), (11, 9), (10, 12), (6, 12), (5, 9)], fill=c, outline=INK); d.point([8, 10], fill=(255, 255, 255, 255))
+def sk_bleed(d, c): d.polygon([(8, 2), (12, 8), (10, 13), (6, 13), (4, 8)], fill=(235, 90, 100, 255), outline=INK)
+def sk_evade(d, c): d.arc([3, 3, 13, 13], 90, 330, fill=c, width=2); d.polygon([(11, 2), (14, 5), (10, 5)], fill=c)
 def sk_drain(d, c):
-    d.polygon([(8, 1), (12, 8), (10, 12), (6, 12), (4, 8)], fill=c, outline=INK)
+    d.polygon([(8, 2), (12, 8), (10, 12), (6, 12), (4, 8)], fill=c, outline=INK)
     d.polygon([(8, 8), (9, 10), (8, 12), (7, 10)], fill=(235, 90, 100, 255))
-def sk_blood(d, c):
-    d.ellipse([3, 3, 8, 9], fill=c, outline=INK); d.ellipse([8, 7, 13, 13], fill=(235, 90, 100, 255), outline=INK)
-def sk_summon(d, c):
-    d.ellipse([4, 2, 12, 14], outline=c, width=2); d.ellipse([6, 5, 10, 11], fill=c)
+def sk_blood(d, c): d.ellipse([3, 3, 8, 9], fill=c, outline=INK); d.ellipse([8, 7, 13, 13], fill=(235, 90, 100, 255), outline=INK)
+def sk_summon(d, c): d.ellipse([4, 3, 12, 13], outline=c, width=2); d.ellipse([6, 6, 10, 10], fill=c)
 def sk_burn(d, c):
-    d.polygon([(8, 1), (11, 6), (13, 9), (11, 13), (5, 13), (3, 9), (6, 5)], fill=(250, 140, 70, 255), outline=INK)
+    d.polygon([(8, 2), (11, 6), (12, 9), (11, 13), (5, 13), (4, 9), (6, 5)], fill=(250, 140, 70, 255), outline=INK)
     d.polygon([(8, 7), (10, 10), (8, 13), (6, 10)], fill=GOLD)
-def sk_nova(d, c):
-    d.ellipse([3, 3, 13, 13], outline=(250, 140, 70, 255), width=2); d.ellipse([6, 6, 10, 10], fill=GOLD, outline=INK)
+def sk_nova(d, c): d.ellipse([3, 3, 13, 13], outline=(250, 140, 70, 255), width=2); d.ellipse([6, 6, 10, 10], fill=GOLD, outline=INK)
 def sk_resource(d, c):
-    pts = [(8, 1), (9, 6), (14, 6), (10, 9), (12, 14), (8, 11), (4, 14), (6, 9), (2, 6), (7, 6)]
+    pts = [(8, 2), (9, 6), (13, 6), (10, 9), (11, 13), (8, 10), (5, 13), (6, 9), (3, 6), (7, 6)]
     d.polygon(pts, fill=c, outline=GOLD_D)
 
 SK = {"shield": sk_shield, "sweep": sk_sweep, "dash": sk_dash, "bolt": sk_bolt, "freeze": sk_freeze,
       "heal": sk_heal, "poison": sk_poison, "bleed": sk_bleed, "evade": sk_evade, "drain": sk_drain,
       "blood": sk_blood, "summon": sk_summon, "burn": sk_burn, "nova": sk_nova, "resource": sk_resource}
-def sk_pass_atk(d, c):
-    d.polygon([(10, 2), (11, 4), (8, 10), (6, 9)], fill=(203, 219, 238, 255), outline=INK)
-    d.line([5, 10, 8, 13], fill=GOLD_D, width=2); d.line([4, 13, 6, 15], fill=(99, 66, 38, 255), width=2)
-def sk_pass_def(d, c): sk_shield(d, (160, 175, 195, 255))
-def sk_pass_reg(d, c):
-    d.ellipse([3, 3, 7, 7], fill=(231, 126, 142, 255)); d.ellipse([8, 3, 12, 7], fill=(231, 126, 142, 255))
-    d.polygon([(3, 6), (12, 6), (7, 13)], fill=(231, 126, 142, 255))
-skills_sheet = Image.new("RGBA", (3 * 32, 8 * 32), (0, 0, 0, 0))
+skills_sheet = Image.new("RGBA", (12 * 32, 8 * 32), (0, 0, 0, 0))
 for ci, cls in enumerate(data["classes"]):
     for si, sk in enumerate(cls["skills"]):
         img, d = canvas()
+        badge(d, CLASS_COL[ci])
         SK[sk["kind"]](d, CLASS_COL[ci])
         img = img.resize((32, 32), Image.NEAREST)
         skills_sheet.paste(img, (si * 32, ci * 32), img)
+
+def sk_pass_atk(d, c):
+    d.polygon([(10, 3), (11, 4), (8, 10), (6, 9)], fill=(203, 219, 238, 255), outline=INK)
+    d.line([5, 10, 8, 13], fill=GOLD_D, width=2)
+def sk_pass_def(d, c): sk_shield(d, (190, 200, 215, 255))
+def sk_pass_reg(d, c):
+    d.ellipse([4, 4, 7, 7], fill=(231, 126, 142, 255)); d.ellipse([9, 4, 12, 7], fill=(231, 126, 142, 255))
+    d.polygon([(4, 6), (12, 6), (8, 12)], fill=(231, 126, 142, 255))
 for pi, fn in enumerate([sk_pass_atk, sk_pass_def, sk_pass_reg]):
-    img, d = canvas(); fn(d, GOLD)
+    img, d = canvas(); badge(d, GOLD); fn(d, GOLD)
     img = img.resize((32, 32), Image.NEAREST)
     skills_sheet.paste(img, (pi * 32, 7 * 32), img)
 skills_sheet.save(ROOT / "assets" / "skills.png")
-print("OK skills.png", skills_sheet.size, "21 iconos")
+print("OK skills.png", skills_sheet.size, "84 iconos")

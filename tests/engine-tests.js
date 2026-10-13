@@ -14,7 +14,7 @@ test('Inicio de siete clases y save válido',()=>{for(let i=0;i<7;i++){g.start(i
 test('Colisión no consume turno',()=>{g.start(0,'classic','test');g.w.enemies=[];g.p.x=0;g.p.y=0;const before=g.run.turn;assert(!g.move(-1,0));assert(g.run.turn===before);});
 test('Esperar sí consume turno',()=>{g.start(0,'classic','test');g.w.enemies=[];g.wait();assert(g.run.turn===1);});
 test('Ataque, XP y bajas',()=>{g.start(0,'classic','test');const e=g.w.enemies[0];e.hp=1;g.hit(e,10);assert(e.hp===0);assert(g.run.metrics.kills===1);});
-test('Equipo, venta y economía',()=>{g.start(0,'classic','test');g.w.enemies=[];const item=g.createItem('i78',2);g.p.inventory.push(item);g.equip(item.uid);assert(g.p.equipment.armor.uid===item.uid);const sell=g.createItem('i36',1);g.p.inventory.push(sell);const gold=g.p.gold;g.sell(sell.uid);assert(g.p.gold>gold);});
+test('Equipo, venta y economía',()=>{g.start(0,'classic','test');g.w.enemies=[];const item=g.createItem('i60',2);g.p.inventory.push(item);g.equip(item.uid);assert(g.p.equipment.armor.uid===item.uid);const sell=g.createItem('i36',1);g.p.inventory.push(sell);const gold=g.p.gold;g.sell(sell.uid);assert(g.p.gold>gold);});
 test('Habilidad y cooldown',()=>{g.start(0,'classic','test');g.w.enemies=[];g.skill(0);assert(g.p.cooldowns[0]>0);assert(g.p.shield>0);});
 test('Árbol funcional',()=>{g.p.points=2;g.train(1);assert(g.p.skillRanks[1]===1);assert(g.p.points===1);});
 test('Classic: una resurrección',()=>{g.start(0,'classic','test');g.p.hp=0;g.die();assert(!g.run.over);assert(g.run.revives===0);g.p.hp=0;g.die();assert(g.run.over);assert(g.meta.records.length===1);});

@@ -31,8 +31,13 @@ items = []
 
 
 def add(name, slot, weapon, effect, stats, price, desc, **extra):
-    it = {"id": f"i{len(items)}", "name": name, "slot": slot, "weapon": weapon,
-          "effect": effect, "stats": stats, "price": price, "sprite": len(items), "desc": desc}
+    n = len(items)
+    if slot in ("weapon", "armor"): req = 1 + (n % 10) * 2
+    elif slot in ("amulet", "necklace", "ring"): req = 2 + (n % 20) // 2
+    elif slot == "relic": req = 5 + (n % 20) // 2
+    else: req = 0
+    it = {"id": f"i{n}", "name": name, "slot": slot, "weapon": weapon,
+          "effect": effect, "stats": stats, "price": price, "sprite": n, "desc": desc, "req": req}
     it.update(extra)
     items.append(it)
 

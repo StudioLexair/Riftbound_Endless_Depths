@@ -59,7 +59,7 @@ s=(R/'data/content.js').read_text();d=json.loads(s[s.index('=')+1:].strip().rstr
 assert len(d['classes'])==7 and len(d['enemies'])==30 and len(d['bosses'])==6 and len(d['items'])==220 and len(d['achievements'])==34
 for group in ['classes','enemies','bosses','items','achievements','quests']:
  ids=[i['id'] for i in d[group]];assert len(ids)==len(set(ids))
-for c in d['classes']:assert len(c['skills'])==3
+for c in d['classes']:assert len(c['skills'])==12
 for a in d['achievements']:assert a['metric'] in ['kills','depth','bosses','gold','level','deaths','runs','steps','zones','events','chests','clean','quests','hardcoreBosses','equips','skills']
 report('PASS: contenido, cantidades, identificadores únicos y métricas de logros.')
 manifest=json.loads((R/'manifest.webmanifest').read_text());assert manifest['display']=='standalone'
