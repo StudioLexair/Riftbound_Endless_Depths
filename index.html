@@ -30,24 +30,21 @@
     <div id="view">
       <canvas id="world" aria-label="Mapa de la mazmorra"></canvas>
       <div id="log" aria-live="polite"></div>
-    </div>
-    <nav id="toolbar" aria-label="Menús de partida">
-      <button data-ui="inventory"><span class="uicon" style="background-position:0 0"></span><small>MOCHILA</small></button>
-      <button data-ui="skills"><span class="uicon" style="background-position:-28px 0"></span><small>ÁRBOL</small></button>
-      <button data-ui="quests"><span class="uicon" style="background-position:-56px 0"></span><small>MISIONES</small></button>
-      <button data-ui="map"><span class="uicon" style="background-position:-84px 0"></span><small>MAPA</small></button>
-      <button data-ui="pause"><span class="uicon" style="background-position:0 -28px"></span><small>PAUSA</small></button>
-    </nav>
-    <section id="controls">
-      <div id="actions">
-        <button data-action="attack" class="primary"><span class="uicon" style="background-position:-28px -28px"></span><small>ATACAR</small></button>
-        <button data-action="interact"><span class="uicon" style="background-position:-56px -28px"></span><small>USAR</small></button>
+      <nav id="toolbar" aria-label="Menús de partida">
+        <button data-ui="inventory" title="Mochila y equipo" aria-label="Mochila y equipo"><span class="uicon" style="background-position:0 0"></span></button>
+        <button data-ui="skills" title="Árbol de habilidades" aria-label="Árbol de habilidades"><span class="uicon" style="background-position:-28px 0"></span></button>
+        <button data-ui="quests" title="Misiones" aria-label="Misiones"><span class="uicon" style="background-position:-56px 0"></span></button>
+        <button data-ui="map" title="Mapa" aria-label="Mapa"><span class="uicon" style="background-position:-84px 0"></span></button>
+        <button data-ui="pause" title="Pausa" aria-label="Pausa"><span class="uicon" style="background-position:0 -28px"></span></button>
+      </nav>
+      <section id="controls" aria-label="Acciones">
+        <button data-action="attack" class="primary" title="Atacar" aria-label="Atacar"><span class="uicon" style="background-position:-28px -28px"></span></button>
+        <button data-action="interact" title="Usar / interactuar" aria-label="Usar o interactuar"><span class="uicon" style="background-position:-56px -28px"></span></button>
         <div id="skillbar"></div>
-        <button data-action="wait"><span class="uicon" style="background-position:-84px -28px"></span><small>ESPERAR</small></button>
-        <button data-action="heal"><span class="uicon" style="background-position:0 -56px"></span><small>CURAR</small></button>
-      </div>
-      <p class="ctl-hint">Desliza sobre el mapa o toca en una dirección para moverte · Toca el centro para esperar</p>
-    </section>
+        <button data-action="wait" title="Esperar un turno" aria-label="Esperar un turno"><span class="uicon" style="background-position:-84px -28px"></span></button>
+        <button data-action="heal" title="Curar (poción)" aria-label="Curar con poción"><span class="uicon" style="background-position:0 -56px"></span></button>
+      </section>
+    </div>
   </section>
   <footer id="status" role="status"></footer>
 </main>

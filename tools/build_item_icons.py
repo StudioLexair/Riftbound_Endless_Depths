@@ -176,12 +176,23 @@ def sk_resource(d, c):
 SK = {"shield": sk_shield, "sweep": sk_sweep, "dash": sk_dash, "bolt": sk_bolt, "freeze": sk_freeze,
       "heal": sk_heal, "poison": sk_poison, "bleed": sk_bleed, "evade": sk_evade, "drain": sk_drain,
       "blood": sk_blood, "summon": sk_summon, "burn": sk_burn, "nova": sk_nova, "resource": sk_resource}
-skills_sheet = Image.new("RGBA", (3 * 32, 7 * 32), (0, 0, 0, 0))
+def sk_pass_atk(d, c):
+    d.polygon([(10, 2), (11, 4), (8, 10), (6, 9)], fill=(203, 219, 238, 255), outline=INK)
+    d.line([5, 10, 8, 13], fill=GOLD_D, width=2); d.line([4, 13, 6, 15], fill=(99, 66, 38, 255), width=2)
+def sk_pass_def(d, c): sk_shield(d, (160, 175, 195, 255))
+def sk_pass_reg(d, c):
+    d.ellipse([3, 3, 7, 7], fill=(231, 126, 142, 255)); d.ellipse([8, 3, 12, 7], fill=(231, 126, 142, 255))
+    d.polygon([(3, 6), (12, 6), (7, 13)], fill=(231, 126, 142, 255))
+skills_sheet = Image.new("RGBA", (3 * 32, 8 * 32), (0, 0, 0, 0))
 for ci, cls in enumerate(data["classes"]):
     for si, sk in enumerate(cls["skills"]):
         img, d = canvas()
         SK[sk["kind"]](d, CLASS_COL[ci])
         img = img.resize((32, 32), Image.NEAREST)
         skills_sheet.paste(img, (si * 32, ci * 32), img)
+for pi, fn in enumerate([sk_pass_atk, sk_pass_def, sk_pass_reg]):
+    img, d = canvas(); fn(d, GOLD)
+    img = img.resize((32, 32), Image.NEAREST)
+    skills_sheet.paste(img, (pi * 32, 7 * 32), img)
 skills_sheet.save(ROOT / "assets" / "skills.png")
 print("OK skills.png", skills_sheet.size, "21 iconos")
