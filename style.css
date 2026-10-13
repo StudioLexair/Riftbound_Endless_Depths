@@ -221,3 +221,5 @@ th{color:var(--gold)}
   #loading{transition:none}
   .bar i{transition:none}
 }
+.itemicon{display:inline-block;width:32px;height:32px;background-image:url("./assets/items.png");background-size:512px 448px;image-rendering:pixelated;vertical-align:middle;margin-right:8px}
+.skillicon{background-image:url("./assets/skills.png");background-size:60px 140px}

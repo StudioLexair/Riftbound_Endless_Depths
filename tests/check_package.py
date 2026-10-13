@@ -56,7 +56,7 @@ for p in R.rglob('*.js'):
   if ref.startswith('.'):assert (p.parent/ref).resolve().is_file(),f'missing import {ref}'
 report('PASS: imports locales y delimitadores de 12 archivos JavaScript (no parseo/ejecución JS).')
 s=(R/'data/content.js').read_text();d=json.loads(s[s.index('=')+1:].strip().rstrip(';'))
-assert len(d['classes'])==7 and len(d['enemies'])==30 and len(d['bosses'])==6 and len(d['items'])==60 and len(d['achievements'])==34
+assert len(d['classes'])==7 and len(d['enemies'])==30 and len(d['bosses'])==6 and len(d['items'])==220 and len(d['achievements'])==34
 for group in ['classes','enemies','bosses','items','achievements','quests']:
  ids=[i['id'] for i in d[group]];assert len(ids)==len(set(ids))
 for c in d['classes']:assert len(c['skills'])==3

@@ -1,3 +1,4 @@
+import {byId} from '../game/game.js';
 export function bindInput(game,ui,renderer){
  let last=0,repeat=null,activePointer=null;const allowed=()=>ui.screen==='play'&&!ui.dialog.open&&!game.run?.over;
  function stop(){clearInterval(repeat);repeat=null;activePointer=null;}
@@ -11,7 +12,7 @@ export function bindInput(game,ui,renderer){
  document.addEventListener('click',event=>{
   const skill=event.target.closest('[data-skill]');if(skill&&allowed()){renderer.map=false;game.skill(Number(skill.dataset.skill));return;}
   const menu=event.target.closest('[data-ui]');if(menu){stop();switch(menu.dataset.ui){case 'inventory':ui.inventory();break;case 'skills':ui.skills();break;case 'quests':ui.quests();break;case 'map':renderer.map=!renderer.map;break;case 'pause':ui.pause();break;}return;}
-  const action=event.target.closest('[data-action]');if(!action||!allowed())return;ui.g.audio.unlock();renderer.map=false;switch(action.dataset.action){case 'wait':game.wait();break;case 'attack':game.attack();break;case 'interact':game.interact();break;case 'heal':{const item=game.p.inventory.find(i=>i.base==='i54');if(item)game.consume(item.uid);else{game.log('No tienes un tónico carmesí.');game.notify();}break;}}
+  const action=event.target.closest('[data-action]');if(!action||!allowed())return;ui.g.audio.unlock();renderer.map=false;switch(action.dataset.action){case 'wait':game.wait();break;case 'attack':game.attack();break;case 'interact':game.interact();break;case 'heal':{const item=game.p.inventory.find(i=>{const d=byId(i.base);return d.slot==='consumable'&&d.effect==='heal';});if(item)game.consume(item.uid);else{game.log('No tienes ninguna poción de salud.');game.notify();}break;}}
  });
  const dirs={w:[0,-1],ArrowUp:[0,-1],s:[0,1],ArrowDown:[0,1],a:[-1,0],ArrowLeft:[-1,0],d:[1,0],ArrowRight:[1,0]};
  document.addEventListener('keydown',event=>{if(['INPUT','SELECT','TEXTAREA'].includes(event.target.tagName))return;if(event.key==='Escape'){stop();if(ui.dialog.open)return;if(ui.screen==='play')ui.pause();return;}if(!allowed())return;const k=event.key.length===1?event.key.toLowerCase():event.key;const dir=dirs[k];if(dir){event.preventDefault();move(...dir);return;}if(event.repeat)return;

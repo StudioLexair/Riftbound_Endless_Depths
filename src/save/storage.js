@@ -1,4 +1,4 @@
-export const SAVE_VERSION=2;
+export const SAVE_VERSION=3;
 const NAME='riftbound-depths';
 export function emptyMeta(){return {shards:0,upgrade:0,unlocked:[0,1,2],achievements:[],stats:{},records:[],characters:[]};}
 export function defaults(){return {music:true,sfx:true,volume:.35,haptics:false,reduced:false,quality:'normal',ui:1,language:'es'};}
@@ -12,7 +12,7 @@ export function validate(save){
  const r=save.run;if(!r)return save;
  if(!r.player||!r.world||!finite(r.depth,1,1e5)||!Number.isInteger(r.classIndex)||r.classIndex<0||r.classIndex>6||typeof r.seed!=='string'||r.seed.length>100||!['classic','hardcore'].includes(r.mode))throw Error('Partida inválida');
  const p=r.player;if(!finite(p.hp,0,1e8)||!finite(p.mp,0,1e8)||!finite(p.level,1,1e5)||!finite(p.x,0,47)||!finite(p.y,0,47)||!finite(p.gold,0,1e12)||!Array.isArray(p.inventory)||p.inventory.length>60||!p.equipment||!Array.isArray(p.skillRanks)||p.skillRanks.length!==6)throw Error('Personaje inválido');
- const checkItem=i=>{if(!i||!/^i\d+$/.test(i.base)||!finite(Number(i.base.slice(1)),0,59)||!Number.isInteger(i.rarity)||!finite(i.rarity,0,5)||!finite(i.power,.5,10000)||typeof i.uid!=='string'||!finite(i.count,1,9999))throw Error('Objeto inválido');};
+ const checkItem=i=>{if(!i||!/^i\d+$/.test(i.base)||!finite(Number(i.base.slice(1)),0,219)||!Number.isInteger(i.rarity)||!finite(i.rarity,0,5)||!finite(i.power,.5,10000)||typeof i.uid!=='string'||!finite(i.count,1,9999))throw Error('Objeto inválido');};
  p.inventory.forEach(checkItem);Object.values(p.equipment).filter(Boolean).forEach(checkItem);
  if(!Number.isInteger(p.x)||!Number.isInteger(p.y)||!finite(p.xp,0,1e12)||!finite(p.points,0,1e9)||!finite(p.shield,0,1e9)||!finite(p.summon,0,1e6))throw Error('Recursos inválidos');
  if(!p.statuses||!p.cooldowns||!r.metrics||!r.questProgress||!Array.isArray(r.claimed)||!Array.isArray(r.zones))throw Error('Datos faltantes');
