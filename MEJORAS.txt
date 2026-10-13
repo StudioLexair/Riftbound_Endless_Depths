@@ -1,6 +1,6 @@
 RIFTBOUND: ENDLESS DEPTHS — LISTA COMPLETA DE MEJORAS POSIBLES
 ================================================================
-Generada tras las versiones 2.0–2.6. Actualizada en la 2.7.0. Ordenada por impacto para el jugador.
+Generada tras las versiones 2.0–2.6. Actualizada en la 2.8.0. Ordenada por impacto para el jugador.
 Leyenda: [HECHO] ya aplicado · [PROX] siguiente paso natural · [IDEA] a valorar
 
 A. JUGABILIDAD Y SISTEMAS
@@ -9,7 +9,7 @@ A. JUGABILIDAD Y SISTEMAS
 [HECHO] 12 habilidades activas por clase: 3 huecos equipados + banco de 9.
 [HECHO] Conjunto (sets) de equipo: bonificaciones por llevar 2/3 piezas del mismo material.
 [HECHO] Encantamientos en la fragua (herrero, Templar): gastar oro/fragmentos para anadir un efecto a un arma.
-[PROX]  Afijos aleatorios al identificar botin ("de fuego", "del ladron"...) ademas de la rareza.
+[HECHO] Afijos aleatorios en el botin raro+ (8 afijos con bonus) ("de fuego", "del ladron"...) ademas de la rareza.
 [PROX]  Durabilidad y reparacion en el herrero para dar uso al oro en late game.
 [PROX]  Mascota/companero invocable permanente que recoge oro (evoluciona con fragmentos).
 [PROX]  Dificultad por sector elegible al entrar al portal (Normal/Pesadilla, mejor botin).
@@ -22,8 +22,8 @@ A. JUGABILIDAD Y SISTEMAS
 
 B. MUNDO Y EXPLORACION
 ----------------------
-[HECHO] Salas especiales por bioma (tinte, nombre y curacion) — pendiente mecanica propia profunda: mecanica propia (hielo resbaladizo, lava que dana por turnos, oscuridad).
-[PROX]  Mini-mapa persistente con notas: marcar portales, NPC y cofres ya vistos con iconos.
+[HECHO] Salas especiales por bioma con mecanica propia (evasión/ataque/crítico/defensa/energía según bioma): mecanica propia (hielo resbaladizo, lava que dana por turnos, oscuridad).
+[HECHO] Mapa con marcadores (portal, NPC, cofre, botín) y marco de la sala especial.
 [HECHO] Cofres y puertas con sprites/detalle del pack en vez de rectangulos dibujados.
 [HECHO] Portal de la grieta animado con particulas propio animado (portal de la grieta con particulas).
 [IDEA]   Zonas secretas tras muros agrietados (golpear el muro para revelar).
@@ -36,7 +36,7 @@ C. GRAFICOS Y ANIMACION
 [HECHO] Ataques con micro-animacion (embestida del jugador): el sprite avanza 4 px hacia el objetivo y vuelve.
 [HECHO] Fotogramas de dano (parpadeo blanco) y de muerte (desvanecer) en enemigos.
 [HECHO] Sombras suaves bajo personajes (elipse) dibujadas como elipse difuminada, no rectangulo.
-[HECHO] Particulas en impactos (pendiente: cofres/nivel/portal).
+[HECHO] Particulas en impactos, cofres, subida de nivel y portal.
 [PROX]  Retratos de clase mas grandes en seleccion y ficha, con marco por rareza del ancla.
 [IDEA]   Modo daltonico: paleta alternativa para telegraphs de jefes y estados.
 [IDEA]   Filtro CRT/pixel perfecto opcional en ajustes para pantalla grande.
@@ -60,9 +60,9 @@ E. AUDIO
 
 F. TECNICO / PLATAFORMA
 -----------------------
-[PROX]  Guardado en la nube opcional con codigo de exportacion (copia/pega) entre movil y PC.
+[HECHO] Guardado exportable con codigo (copia/pega) entre movil y PC, en Ajustes.
 [PROX]  Semilla semanal automatica: el portal de inicio muestra la semilla del dia.
-[PROX]  Modo rendimiento: bajar a 30 fps y sin particulas automatico en moviles antiguos.
+[HECHO] Modo rendimiento automatico en moviles tactiles con pocos nucleos (calidad baja).
 [PROX]  Pruebas automaticas en navegador real (Playwright) en cada publicacion ademas de las de motor.
 [IDEA]   Compilar a APK con Capacitor para probar instalacion Android real desde el mismo codigo.
 [IDEA]   Estadisticas anonimas locales exportables (JSON) para balancear clases y jefes.
@@ -76,7 +76,7 @@ G. ACCESIBILIDAD
 
 H. CONTENIDO Y TEXTOS
 ---------------------
-[PROX]  Nombre y frase propios para los 30 enemigos (hoy comparten comportamiento por bioma).
+[PARCIAL] Jefes con frase propia al verte; falta frase/nombre unico por enemigo comun.
 [HECHO] Bestiario en records (bajas por enemigo): enemigos vistos, muertes que te causaron, debilidades.
 [HECHO] Mas misiones del cartografo (18 totales; objetivo 36): con recompensas unicas (reliquias).
 [IDEA]   NPCs con dialogo ramificado y tienda que recuerda tus compras.

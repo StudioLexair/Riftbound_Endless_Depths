@@ -1,7 +1,7 @@
 {
   "PLAY_WINDOWS.bat": "9cbf5fead798054eea36138c1b3cb4f36d95d5fc699fcd395282ff04daf4f000",
   "ASSET_LICENSES.md": "9b21a1b7c4c97329c06327f1b4489acc5a8e9be8335f321ec04d29aa785ac08c",
-  "sw.js": "cb035b7a364e4dc28575759fd945e2ecc95a4b8d95ed4e27f2f545d675940aa4",
+  "sw.js": "22e92c345ed8d7bac734aa0813a9366475d1472a50ca3693a6e8cae576146ddb",
   "LICENSE": "5b4c1296c3c32054b46bd09a7c939165cfe761226143248a482e4ecf92aab52f",
   "serve.py": "984156d3ee5541650ef6e84dec6104698534aff3dde3c00a44a1c87024f96276",
   "PLAY_MAC_LINUX.sh": "a31342ffd9b907817fde6abc732ab4796c52210752689b2735db0bdd37018b6e",
@@ -19,12 +19,12 @@
   "data/content.js": "c18406d2615dd7c0c0ac8a16862bcc681444c02839bca214fef172770e21a73b",
   "src/world/generator.js": "967b29f2a9487dfa1548f005369b3d9e6e557292af481ac98f0d4148a40eabdb",
   "src/core/random.js": "6232416a7601f4faee7b5c53d48e9c113748733a20979bf5db4bc692c305d80a",
-  "src/core/main.js": "316d0af82dcccea00dfb71097c427ce42a4362188b08d09e6e9402011f55f268",
+  "src/core/main.js": "205a9e26c9dbac0078e2400f530eb508e99fdf9456b7fa031210793647de3951",
   "src/input/controls.js": "418e1b47bca97a01835f622db6fb37eefa4ffbe7aba4121b318ae80b9dab2935",
-  "src/ui/interface.js": "eee0c0aaf7a3436e701cd7bbe574de523b814bce45ff8e9bfedc396bf5009dd0",
+  "src/ui/interface.js": "680895f568a1289cc9ef7b4797298e1034ad9431246090b4a4089bbd7b5a8739",
   "src/save/storage.js": "208a8dac45c45794c8d899d460de3acf24ee310efd962c8bc179eb03cb14d6c7",
-  "src/game/game.js": "885cc435257e45a764f0eaa95626e54b8854c3fcd4e5ed2f050f15ecc5267d5a",
-  "src/game/renderer.js": "5c93405adac553f97dc975f9ac353ccf72fc5e174c97d80ef6286b3ed1091e60",
+  "src/game/game.js": "e93b2b55de8ec079cdc8d355661617a9bca5208fe1d36f79fd48b56643821bc8",
+  "src/game/renderer.js": "8fbeac26a0f227184fc97786c7093be62a12fca207a7e1fcdfafbb7d6c2cd913",
   "src/audio/synth.js": "a6bc9f6debff4367a5ecaa5a3f63f6ff3f4b242a9c88295def990c63ae052f52",
   "assets/ui/logo.svg": "bcc75bafddc12bd6bbeb2551fec5809fcbb0bd6b76f11086da8b058cff7d25d1",
   "assets/ui/icon-192.png": "c38a8c4db8002934606b98d98da2653bfab2a1ca2aa0e77caee8078c57f4af0f",
@@ -40,5 +40,5 @@
   "assets/skills.png": "c2df57de9ca8b32f349144e9062e58532b45f78f0b7fa37174ff5acce7d7ae09",
   "tools/build_items_data.py": "82e26e1cfce1ff6393978bec0f422044df1dc14498ba6e54eb3b26ed18cd1172",
   "tools/build_item_icons.py": "5ebf524e44ef94a1f11df5120d0bd3b45edced87d5627a3c99ee05ca4d5aaff1",
-  "MEJORAS.txt": "22cf770529a790d6776950f8724674dec24096771850d20f6751829646a19b25"
+  "MEJORAS.txt": "cefd8f48948af0c9885db8b20304cc1f5287fa22c46e3d48f2bbc307354c38b6"
 }

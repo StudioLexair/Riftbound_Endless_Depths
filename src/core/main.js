@@ -66,7 +66,7 @@ async function boot(){
  let storage=new Storage(),saved=null,persistent=true;
  try{await storage.init();saved=await storage.load();}catch(error){persistent=false;storage={save:async()=>{},clear:async()=>{},load:async()=>null};status.textContent='Guardado no disponible en este navegador: la sesión no persistirá.';}
  setProgress(38,'Tejiendo el mundo…');
- const settings={...defaults(),...saved?.settings},meta=saved?.meta||emptyMeta();meta.characters=meta.characters||[];const audio=new Audio(settings),game=new Game(meta,audio,settings);game.run=saved?.run||null;if(game.run){game.run.lastTime=Date.now();game.markSeen();}
+ const settings={...defaults(),...saved?.settings};if(!saved&&window.matchMedia&&window.matchMedia('(pointer: coarse)').matches&&(navigator.hardwareConcurrency||8)<=4)settings.quality='low';const meta=saved?.meta||emptyMeta();meta.characters=meta.characters||[];const audio=new Audio(settings),game=new Game(meta,audio,settings);game.run=saved?.run||null;if(game.run){game.run.lastTime=Date.now();game.markSeen();}
  const renderer=new Renderer(document.querySelector('#world'),game);let pending=false,saving=false,again=false;
  const save=async()=>{if(!persistent)return;if(saving){again=true;return;}saving=true;try{await storage.save({meta:game.meta,settings,run:game.run});status.textContent='Guardado local · '+(navigator.onLine?'con conexión':'sin conexión');}catch(e){status.textContent='No se pudo guardar: '+e.message;}finally{saving=false;if(again){again=false;save();}}};
  const schedule=()=>{if(pending)return;pending=true;setTimeout(()=>{pending=false;save();},250);};
