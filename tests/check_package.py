@@ -66,7 +66,7 @@ manifest=json.loads((R/'manifest.webmanifest').read_text());assert manifest['dis
 from PIL import Image
 for icon in manifest['icons']:
  p=R/icon['src'];assert p.is_file();assert Image.open(p).size==tuple(map(int,icon['sizes'].split('x')))
-assert Image.open(R/'assets/sprites/atlas.png').size==(256,112)
+assert Image.open(R/'assets/sprites/atlas.png').size==(512,896)
 report('PASS: manifest, dimensiones PWA 192/512, atlas de 109 sprites.')
 sw=(R/'sw.js').read_text();files=json.loads(re.search(r'const FILES=(\[.*?\]);',sw).group(1))
 for f in files:
@@ -87,12 +87,12 @@ class RNG:
   return ((t^(t>>14))&0xffffffff)/4294967296
 
 def topology(seed,depth):
- rand=RNG(hash_(f'{seed}:{depth}'));tiles=[[0]*36 for _ in range(36)];rooms=[]
+ rand=RNG(hash_(f'{seed}:{depth}'));tiles=[[0]*48 for _ in range(48)];rooms=[]
  def carve(x,y):
-  if 0<x<35 and 0<y<35:tiles[y][x]=1
+  if 0<x<47 and 0<y<47:tiles[y][x]=1
  for j in range(3):
   for i in range(3):
-   w=6+int(rand()*5);h=6+int(rand()*5);x=2+i*11+int(rand()*2);y=2+j*11+int(rand()*2);shape=int(rand()*4)
+   w=9+int(rand()*5);h=9+int(rand()*5);x=2+i*15+int(rand()*2);y=2+j*15+int(rand()*2);shape=int(rand()*4)
    for dy in range(h):
     for dx in range(w):
      if shape==1 and dx in [0,w-1] and dy in [0,h-1]:continue
@@ -117,8 +117,8 @@ def topology(seed,depth):
   x,y=q.popleft()
   for dx,dy in [(0,1),(0,-1),(1,0),(-1,0)]:
    xx=x+dx;yy=y+dy
-   if 0<=xx<36 and 0<=yy<36 and tiles[yy][xx] and (xx,yy) not in seen:seen.add((xx,yy));q.append((xx,yy))
- floors={(x,y) for y in range(36) for x in range(36) if tiles[y][x]}
+   if 0<=xx<48 and 0<=yy<48 and tiles[yy][xx] and (xx,yy) not in seen:seen.add((xx,yy));q.append((xx,yy))
+ floors={(x,y) for y in range(48) for x in range(48) if tiles[y][x]}
  assert seen==floors,'Floor connectivity error'
  assert rooms[-1] in seen
  return tiles

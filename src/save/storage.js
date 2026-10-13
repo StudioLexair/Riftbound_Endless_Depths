@@ -1,4 +1,4 @@
-export const SAVE_VERSION=1;
+export const SAVE_VERSION=2;
 const NAME='riftbound-depths';
 export function emptyMeta(){return {shards:0,upgrade:0,unlocked:[0,1,2],achievements:[],stats:{},records:[],characters:[]};}
 export function defaults(){return {music:true,sfx:true,volume:.35,haptics:false,reduced:false,quality:'normal',ui:1,language:'es'};}
@@ -11,7 +11,7 @@ export function validate(save){
  if(!finite(save.settings.volume,0,1)||!finite(save.settings.ui,.8,1.4))throw Error('Ajustes inválidos');
  const r=save.run;if(!r)return save;
  if(!r.player||!r.world||!finite(r.depth,1,1e5)||!Number.isInteger(r.classIndex)||r.classIndex<0||r.classIndex>6||typeof r.seed!=='string'||r.seed.length>100||!['classic','hardcore'].includes(r.mode))throw Error('Partida inválida');
- const p=r.player;if(!finite(p.hp,0,1e8)||!finite(p.mp,0,1e8)||!finite(p.level,1,1e5)||!finite(p.x,0,35)||!finite(p.y,0,35)||!finite(p.gold,0,1e12)||!Array.isArray(p.inventory)||p.inventory.length>60||!p.equipment||!Array.isArray(p.skillRanks)||p.skillRanks.length!==6)throw Error('Personaje inválido');
+ const p=r.player;if(!finite(p.hp,0,1e8)||!finite(p.mp,0,1e8)||!finite(p.level,1,1e5)||!finite(p.x,0,47)||!finite(p.y,0,47)||!finite(p.gold,0,1e12)||!Array.isArray(p.inventory)||p.inventory.length>60||!p.equipment||!Array.isArray(p.skillRanks)||p.skillRanks.length!==6)throw Error('Personaje inválido');
  const checkItem=i=>{if(!i||!/^i\d+$/.test(i.base)||!finite(Number(i.base.slice(1)),0,59)||!Number.isInteger(i.rarity)||!finite(i.rarity,0,5)||!finite(i.power,.5,10000)||typeof i.uid!=='string'||!finite(i.count,1,9999))throw Error('Objeto inválido');};
  p.inventory.forEach(checkItem);Object.values(p.equipment).filter(Boolean).forEach(checkItem);
  if(!Number.isInteger(p.x)||!Number.isInteger(p.y)||!finite(p.xp,0,1e12)||!finite(p.points,0,1e9)||!finite(p.shield,0,1e9)||!finite(p.summon,0,1e6))throw Error('Recursos inválidos');
@@ -21,12 +21,12 @@ export function validate(save){
  const statusCheck=entity=>{for(const [name,value] of Object.entries(entity.statuses)){if(!['burn','poison','bleed','freeze','stun','weak','regen','guard','evade','empower'].includes(name)||!value||!finite(value.turns,1,1000)||!finite(value.power,0,1e6))throw Error('Estado inválido');}};statusCheck(p);
  for(const value of Object.values(r.metrics))if(!finite(value,0,1e12))throw Error('Métrica inválida');
  if(!finite(r.randomState,0,4294967295)||!finite(r.turn,0,1e12)||!finite(r.elapsed,0,1e12)||!finite(r.revives,0,1))throw Error('Run inválida');
- const w=r.world;if(!Number.isInteger(w.biome)||w.biome<0||w.biome>5||!w.start||!finite(w.start.x,1,34)||!finite(w.start.y,1,34)||!finite(w.nextId,1,1e9))throw Error('Sector inválido');
- if(w.depth!==r.depth||!Array.isArray(w.tiles)||w.tiles.length!==36||w.tiles.some(row=>!Array.isArray(row)||row.length!==36||row.some(t=>t!==0&&t!==1))||!Array.isArray(w.enemies)||w.enemies.length>180||!Array.isArray(w.objects)||w.objects.length>250||!Array.isArray(w.seen))throw Error('Mundo inválido');
+ const w=r.world;if(!Number.isInteger(w.biome)||w.biome<0||w.biome>5||!w.start||!finite(w.start.x,1,46)||!finite(w.start.y,1,46)||!finite(w.nextId,1,1e9))throw Error('Sector inválido');
+ if(w.depth!==r.depth||!Array.isArray(w.tiles)||w.tiles.length!==48||w.tiles.some(row=>!Array.isArray(row)||row.length!==48||row.some(t=>t!==0&&t!==1))||!Array.isArray(w.enemies)||w.enemies.length>180||!Array.isArray(w.objects)||w.objects.length>400||!Array.isArray(w.seen))throw Error('Mundo inválido');
  if(w.tiles[p.y]?.[p.x]!==1)throw Error('Posición inválida');
- for(const e of w.enemies){if(!/^[eb]\d+$/.test(e.def)||!Number.isInteger(Number(e.def.slice(1)))||Number(e.def.slice(1))>(e.def[0]==='e'?29:5)||!finite(e.hp,0,1e8)||!finite(e.maxHp,1,1e8)||!finite(e.x,0,35)||!finite(e.y,0,35)||!Number.isInteger(e.x)||!Number.isInteger(e.y)||!e.statuses||!finite(e.clock,0,10)||!finite(e.turns,0,1e12))throw Error('Enemigo inválido');statusCheck(e);}
- for(const o of w.objects){if(!['exit','npc','chest','trap','event','door','loot'].includes(o.type)||!Number.isInteger(o.x)||!Number.isInteger(o.y)||!finite(o.x,0,35)||!finite(o.y,0,35))throw Error('Objeto de mundo inválido');if(o.type==='loot'){if(!Array.isArray(o.items)||o.items.length>100)throw Error('Botín inválido');o.items.forEach(checkItem);}if(o.type==='npc'&&!['merchant','healer','smith','trainer','story','secret'].includes(o.npc))throw Error('NPC inválido');}
- if(w.seen.length>1296||w.seen.some(k=>typeof k!=='string'||!/^\d{1,2},\d{1,2}$/.test(k)))throw Error('Exploración inválida');
+ for(const e of w.enemies){if(!/^[eb]\d+$/.test(e.def)||!Number.isInteger(Number(e.def.slice(1)))||Number(e.def.slice(1))>(e.def[0]==='e'?29:5)||!finite(e.hp,0,1e8)||!finite(e.maxHp,1,1e8)||!finite(e.x,0,47)||!finite(e.y,0,47)||!Number.isInteger(e.x)||!Number.isInteger(e.y)||!e.statuses||!finite(e.clock,0,10)||!finite(e.turns,0,1e12))throw Error('Enemigo inválido');statusCheck(e);}
+ for(const o of w.objects){if(!['exit','npc','chest','trap','event','door','loot','prop'].includes(o.type)||!Number.isInteger(o.x)||!Number.isInteger(o.y)||!finite(o.x,0,47)||!finite(o.y,0,47))throw Error('Objeto de mundo inválido');if(o.type==='loot'){if(!Array.isArray(o.items)||o.items.length>100)throw Error('Botín inválido');o.items.forEach(checkItem);}if(o.type==='npc'&&!['merchant','healer','smith','trainer','story','secret'].includes(o.npc))throw Error('NPC inválido');}
+ if(w.seen.length>2304||w.seen.some(k=>typeof k!=='string'||!/^\d{1,2},\d{1,2}$/.test(k)))throw Error('Exploración inválida');
  return save;
 }
 export class Storage{

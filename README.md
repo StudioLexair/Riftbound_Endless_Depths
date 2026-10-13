@@ -28,6 +28,13 @@ Para Android y una URL pública instalable, la carpeta es desplegable sin compil
 - Menús, ajustes de sonido, volumen, vibración, reducción de efectos, calidad, escala UI; confirmación de eliminación; tutorial breve integrado en mensajes.
 - Sprites originales locales, logo SVG y sonidos sintetizados. Sin emojis ni recursos externos.
 
+## Actualización «Mundo Grande» (assets Pixel Crawler)
+
+- Sectores de **48×48** (antes 36×36): salas más grandes, 3–5 enemigos por sala, más cofres/eventos y **props decorativos** (antorchas, estandartes, arbustos, tumbas, bancos…) repartidos por el mundo.
+- Nuevo atlas animado de 32×32 generado desde **Pixel Crawler – Free Pack (Anokolisa)**: héroes (Knight/Wizzard/Rogue), 8 razas base de Skeleton/Orc con tinte por bioma (30 enemigos), jefes y NPC, con **animación idle de 4 frames**. Script reproducible en `tools/build_crawler_assets.py`, procedencia en `tools/crawler-manifest.json` y licencia en `ASSET_LICENSES.md`.
+- Suelos y muros con tiles reales del pack, recoloreados para los seis biomas (`assets/sprites/biome-tiles.png`).
+- Guardado actualizado a la **versión 2**: las partidas de la v1 no se migran (el metaprogreso de versiones anteriores se descarta con el save, como ya hacía el validador con formatos desconocidos).
+
 ## Estructura y generación
 
 `src/core`, `src/game`, `src/world`, `src/input`, `src/ui`, `src/audio`, `src/save`, `data`, `assets`, `tests`.

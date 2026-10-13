@@ -5,6 +5,7 @@ No se descargaron recursos externos. No hay licencias de terceros que verificar 
 | Recurso | Autoría / procedencia | URL de origen | Condiciones | Fecha de generación | Uso |
 |---|---|---|---|---|---|
 | Atlas original: 109 sprites de 16×16 | Generado con asistencia de TryChatGet; dibujo geométrico local | No aplica: creación local | MIT del proyecto, en la medida en que existan derechos licenciables | 2026-10-03 | 7 clases, 30 enemigos, 6 jefes, 6 NPCs, 60 objetos |
+| Atlas Pixel Crawler derivado: heroes, enemigos, jefes, NPC, tiles y props (con recolores por bioma generados por script) | Pixel Crawler - Free Pack 2.11 de Anokolisa (itch.io), terminos del autor: uso en cualquier proyecto incl. comercial, prohibido vender los assets como producto, credito apreciado | https://anokolisa.itch.io/free-pixel-art-asset-pack-topdown-tileset-rpg-16x16-sprites | Terminos del pack (ver tools/crawler-manifest.json) | 2026-10-13 | Sustituye al atlas original 16x16: atlas animado 32x32, tiles por bioma y props en sectores de 48x48 |
 | Iconos PWA 192 y 512 | Dibujo pixel-art local | No aplica | MIT del proyecto | 2026-10-03 | Manifest, favicon e instalación |
 | Logo SVG | Geometría y tipografía del sistema | No aplica | MIT para el SVG; no se redistribuye fuente | 2026-10-03 | Menú principal |
 | Tiles de seis biomas | Código original de Canvas | No aplica | MIT del proyecto | 2026-10-03 | Árboles, tumbas, columnas, cristales, ladrillos, piedra abisal, suelos |

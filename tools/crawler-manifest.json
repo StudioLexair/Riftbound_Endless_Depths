@@ -1,0 +1,18 @@
+{
+  "source": "Pixel Crawler - Free Pack 2.11 by Anokolisa (itch.io)",
+  "terms": "Uso en cualquier proyecto incl. comercial; no vender los assets como producto; credito apreciado.",
+  "atlas": "celdas 32x32; animacion: indice = capa*112 + id para ids 0..48 (4 capas idle)",
+  "clases": [
+    "Knight",
+    "Wizzard",
+    "Rogue",
+    "Rogue oscuro",
+    "Orc Warrior rojo",
+    "Skeleton Mage teal",
+    "Wizzard igneo"
+  ],
+  "enemigos": "8 bases Skeleton/Orc x tinte de bioma (30 combinaciones)",
+  "jefes": "Orc/Skeleton Warrior/Mage con tinte reforzado por bioma",
+  "tiles": "Dungeon_Tiles de Pixel Crawler tenidos con los colores de cada bioma de Riftbound",
+  "props": "Dungeon_Props + Vegetation de Pixel Crawler"
+}

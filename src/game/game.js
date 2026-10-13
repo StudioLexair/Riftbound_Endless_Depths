@@ -31,13 +31,13 @@ export class Game{
  gold(n){this.p.gold+=n;this.metric('goldEarned',n);}
  gainXP(n){const p=this.p;p.xp+=n;while(p.xp>=this.xpGoal()){p.xp-=this.xpGoal();p.level++;p.points+=2;p.hp=Math.min(this.stats().hp,p.hp+12);p.mp=Math.min(this.stats().resource,p.mp+6);this.log(`Nivel ${p.level}: +2 puntos de habilidad.`);this.audio.sound('level');}this.meta.stats.level=Math.max(this.meta.stats.level||0,p.level);}
  xpGoal(){return 22+this.p.level*16;}
- markSeen(){const seen=new Set(this.w.seen);for(let dy=-7;dy<=7;dy++)for(let dx=-7;dx<=7;dx++){const x=this.p.x+dx,y=this.p.y+dy;if(x<0||y<0||x>=36||y>=36||Math.hypot(dx,dy)>7)continue;if(lineClear(this.w,this.p,{x,y})||Math.abs(dx)+Math.abs(dy)<=2)seen.add(key(x,y));}this.w.seen=[...seen];}
+ markSeen(){const seen=new Set(this.w.seen);for(let dy=-7;dy<=7;dy++)for(let dx=-7;dx<=7;dx++){const x=this.p.x+dx,y=this.p.y+dy;if(x<0||y<0||x>=this.w.tiles.length||y>=this.w.tiles.length||Math.hypot(dx,dy)>7)continue;if(lineClear(this.w,this.p,{x,y})||Math.abs(dx)+Math.abs(dy)<=2)seen.add(key(x,y));}this.w.seen=[...seen];}
  visible(e){return distance(this.p,e)<=8&&lineClear(this.w,this.p,e);}
  haptic(pattern){if(this.settings.haptics)navigator.vibrate?.(pattern);}
  nearest(max=6){return this.w.enemies.filter(e=>e.hp>0&&distance(e,this.p)<=max&&lineClear(this.w,this.p,e)).sort((a,b)=>distance(a,this.p)-distance(b,this.p))[0];}
  move(dx,dy){if(!this.canAct())return false;this.facing={dx,dy};if(this.p.statuses.stun||this.p.statuses.freeze){this.log('No puedes moverte: espera a recuperar el control.');this.endTurn();return true;}
  const x=this.p.x+dx,y=this.p.y+dy;if(!isFloor(this.w,x,y))return false;const enemy=this.w.enemies.find(e=>e.x===x&&e.y===y&&e.hp>0);if(enemy){this.hit(enemy,1);this.endTurn();return true;}
- const obj=this.w.objects.find(o=>o.x===x&&o.y===y&&!o.used);if(obj?.type==='door'&&!obj.open){obj.open=true;this.log('La puerta se abre.');this.endTurn();return true;}
+ const obj=this.w.objects.find(o=>o.x===x&&o.y===y&&!o.used&&o.type!=='prop');if(obj?.type==='door'&&!obj.open){obj.open=true;this.log('La puerta se abre.');this.endTurn();return true;}
  if(obj?.type==='npc'){this.onInteract?.(obj);return false;}
  this.p.x=x;this.p.y=y;this.metric('steps');if(this.run.metrics.steps===2)this.log('Choca con un enemigo para atacar. ESPERAR permite atraerlo.');if(this.run.metrics.steps===8)this.log('Abre MOCHILA para comparar equipo. El botón I usa tu habilidad.');if(this.run.metrics.steps===15)this.log('CURAR consume un tónico y un turno. Recoge botín pisándolo o con INTERACTUAR.');if(this.run.metrics.steps===24)this.log('El guardián libera el portal. CLASSIC tiene un ancla; HARDCORE no permite volver.');
  if(obj?.type==='trap'){obj.used=true;this.damagePlayer(3+this.run.depth,null);this.status(this.p,DATA.biomes[this.w.biome].hazard,3,2);this.log('Has activado una trampa.');}
