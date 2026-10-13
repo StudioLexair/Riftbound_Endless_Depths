@@ -1,7 +1,7 @@
 {
   "PLAY_WINDOWS.bat": "9cbf5fead798054eea36138c1b3cb4f36d95d5fc699fcd395282ff04daf4f000",
   "ASSET_LICENSES.md": "9b21a1b7c4c97329c06327f1b4489acc5a8e9be8335f321ec04d29aa785ac08c",
-  "sw.js": "8009e491b449166e081584ab709f61472935bade163359b72836602df388e84f",
+  "sw.js": "85d72bb97f12a899e1f3ec314080d375cbb89b1b50614f14bbe33a302e74cd98",
   "LICENSE": "5b4c1296c3c32054b46bd09a7c939165cfe761226143248a482e4ecf92aab52f",
   "serve.py": "984156d3ee5541650ef6e84dec6104698534aff3dde3c00a44a1c87024f96276",
   "PLAY_MAC_LINUX.sh": "a31342ffd9b907817fde6abc732ab4796c52210752689b2735db0bdd37018b6e",
@@ -9,7 +9,7 @@
   "manifest.webmanifest": "10301f876b2b49b966dd0783af230720ab983b52281b8e53679bad98353512a0",
   "index.html": "3885f43f5ba2c35a59116012f9aa11d055a22c21f404f3ec46c7510358dbf8b8",
   "VALIDATION.md": "a8427f3e478bcb796bc3a1a418885743f1e5d7d5b50ca80735f5689869038cf3",
-  "style.css": "3d81c7b03027fa450ab0b35b3cd141f44ab87895061f553e3539ee881cc37e19",
+  "style.css": "26d6d69e16bd68720e94d1f513109d058531e5e0acce331c69ee8662eea6fe8b",
   ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "README.md": "eae717aee0b0c420f99fcc376b61077e911e25e6509fb9e7f32eba29a6821eea",
   "tests/index.html": "56d62924b4b72599695e0fe1bf025698d87018f97ca93129ea2f1259c0b3626a",
@@ -21,9 +21,9 @@
   "src/core/random.js": "6232416a7601f4faee7b5c53d48e9c113748733a20979bf5db4bc692c305d80a",
   "src/core/main.js": "205a9e26c9dbac0078e2400f530eb508e99fdf9456b7fa031210793647de3951",
   "src/input/controls.js": "418e1b47bca97a01835f622db6fb37eefa4ffbe7aba4121b318ae80b9dab2935",
-  "src/ui/interface.js": "d17a9953b03b90528c4e9f2e6bef622da53e1905a28d7c1e18e9fb20f9bfac06",
-  "src/save/storage.js": "fc6cceecfa8af04de67008205c4547d10db7ac28da21a3feb92cdda32551d3d8",
-  "src/game/game.js": "49f3ae090353f1a1095baad3934a10528876c37ecfc0cd3ccfb462f69f7dd241",
+  "src/ui/interface.js": "9cf2fdf195033d447a96b418f5ef612c425afcaf782c194dd64614edd9fc86c5",
+  "src/save/storage.js": "0a590455f6ac987b76bc3b103417040faceeb1d66fce2659cf162665cc39abe6",
+  "src/game/game.js": "4ea06eb2bd9c37e8d207b3af151c5aef1960a05c8b6f3be3dd2277b180f2a391",
   "src/game/renderer.js": "36e92e944458dbb3acdc2659fa96bd5a3214797ff6e2344e3b8a8c23b689b2f1",
   "src/audio/synth.js": "a6bc9f6debff4367a5ecaa5a3f63f6ff3f4b242a9c88295def990c63ae052f52",
   "assets/ui/logo.svg": "bcc75bafddc12bd6bbeb2551fec5809fcbb0bd6b76f11086da8b058cff7d25d1",
@@ -40,5 +40,7 @@
   "assets/skills.png": "c2df57de9ca8b32f349144e9062e58532b45f78f0b7fa37174ff5acce7d7ae09",
   "tools/build_items_data.py": "82e26e1cfce1ff6393978bec0f422044df1dc14498ba6e54eb3b26ed18cd1172",
   "tools/build_item_icons.py": "5ebf524e44ef94a1f11df5120d0bd3b45edced87d5627a3c99ee05ca4d5aaff1",
-  "MEJORAS.txt": "273ed512b45c22be2f5fa41d7a84cfde19c9d2081fca59577609c711325b2272"
+  "MEJORAS.txt": "273ed512b45c22be2f5fa41d7a84cfde19c9d2081fca59577609c711325b2272",
+  "assets/characters/brujo.png": "314eeb99a92427e0864b7c110fbe8167b057aafb49de3293669b066e36dc2b54",
+  "tools/pixel_studio.py": "9ccf550187579430ebbfb4f218dc801a3f870cb335559d5255d7fdac30efd571"
 }

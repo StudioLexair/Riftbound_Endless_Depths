@@ -9,7 +9,7 @@ export function validate(save){
  if(m.unlocked.some(n=>!Number.isInteger(n)||n<0||n>6)||m.records.length>30)throw Error('Desbloqueos inválidos');
  for(const value of Object.values(m.stats))if(!finite(value,0,1e12))throw Error('Estadísticas inválidas');
  if(!finite(save.settings.volume,0,1)||!finite(save.settings.ui,.8,1.4))throw Error('Ajustes inválidos');
- const r=save.run;if(!r)return save;
+ const r=save.run;if(!r)return save;if(r.name!==undefined&&(typeof r.name!=='string'||r.name.length>24))throw Error('Nombre inválido');
  if(!r.player||!r.world||!finite(r.depth,1,1e5)||!Number.isInteger(r.classIndex)||r.classIndex<0||r.classIndex>6||typeof r.seed!=='string'||r.seed.length>100||!['classic','hardcore'].includes(r.mode))throw Error('Partida inválida');
  const p=r.player;if(!finite(p.hp,0,1e8)||!finite(p.mp,0,1e8)||!finite(p.level,1,1e5)||!finite(p.x,0,47)||!finite(p.y,0,47)||!finite(p.gold,0,1e12)||!Array.isArray(p.inventory)||p.inventory.length>60||!p.equipment||!Array.isArray(p.skillRanks)||p.skillRanks.length!==15)throw Error('Personaje inválido');
  const checkItem=i=>{if(!i||!/^i\d+$/.test(i.base)||!finite(Number(i.base.slice(1)),0,219)||!Number.isInteger(i.rarity)||!finite(i.rarity,0,5)||!finite(i.power,.5,10000)||typeof i.uid!=='string'||!finite(i.count,1,9999))throw Error('Objeto inválido');};
